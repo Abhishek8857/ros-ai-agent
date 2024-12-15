@@ -24,7 +24,7 @@ def move_to_home_pose () -> None:
     Returns:
         list: list with Cartesian Coordinates
     """
-    home_pose_coordinates = [0.0, -0.94, -3.15, -2.13, 0.05, -1.2, 1.5]
+    home_pose_coordinates = [0.28, -0.2, 0.5, 1.0, 0.0, 0.0, 0.0]
     
     # Initialise the ROS2 Node to publish the coordinates
     agent_node = PublishMessage()
