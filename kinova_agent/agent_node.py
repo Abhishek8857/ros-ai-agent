@@ -32,24 +32,10 @@ class Agent(Node):
                 
         response = agent.invoke([msg.data])
         self.get_logger().info(response)
-        # Extract and log only the response message content
-        # self.get_logger().info(f"Agent response: {response.content}")
-        
-        # Wait for a few seconds
-        time.sleep(2.0)
-        
-        # Create and Publish the agent response
-        # publish_msg = String()
-        # publish_msg.data = response.content
-        # self.publisher.publish(publish_msg)
-        # self.get_logger().info(f"Publishing agent response: {response.content}")
 
         # Wait for the next message
         self.get_logger().info(f"Waiting for the next message ...\n")
 
-    
-    
-    
 def main ():
     rclpy.init()
     node = Agent()
