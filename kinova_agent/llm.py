@@ -2,7 +2,7 @@ from langchain_ollama import ChatOllama
 from .agent_tools import get_tools
 
 model = "llama3.1"
-model_temperature = 0.0
+model_temperature = 0.8
 
 def get_llm():
     return ChatOllama(model=model, 
