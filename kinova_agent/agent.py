@@ -1,9 +1,9 @@
 from langchain_ollama import ChatOllama
-from langchain.agents import AgentExecutor, create_openai_functions_agent
+from langchain.agents import AgentExecutor
 from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
 from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
+from langchain_core.messages import HumanMessage, AIMessage
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.tools import Tool
 from .agent_prompts import system_prompts
 from .agent_tools import get_tools
 from typing import Optional
@@ -76,6 +76,7 @@ class KinovaAgent:
         result = self.executor.invoke(
             {"input": query, "chat_history": self.chat_history}
         )
+        self.accumulate_chat_history(query, result["output"])
         return result["output"]
             
             
@@ -95,4 +96,16 @@ class KinovaAgent:
             ]
         )
         return prompts
+        
+        
+    def accumulate_chat_history(self, query: str, response: str):
+        """
+        Record the interaction between user and agent
+
+        Args:
+            query (str): User Query
+            response (str): Agent Response
+        """
+        if self.record_chat_history:
+            self.chat_history.extend([HumanMessage(content=query), AIMessage(content=response)])
         
