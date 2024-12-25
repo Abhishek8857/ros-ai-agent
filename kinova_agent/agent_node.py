@@ -11,7 +11,6 @@ class Agent(Node):
     def __init__(self):
         super().__init__("Kinova_Agent")
         qos_profile = QoSProfile(depth=1, durability=QoSDurabilityPolicy.VOLATILE)
-        self.publisher = self.create_publisher(String, "tool_query", qos_profile)
         self.subscription = self.create_subscription(String, "transcription_text", self.agent_callback , qos_profile)
 
         # Instantiate the Agent
@@ -35,7 +34,6 @@ class Agent(Node):
         # Invoke the agent and handle the response
         try:
             self.get_logger().info(f"Invoking Agent with the query: [{msg.data}]")
-            self.publisher.publish(msg)
             response = self.agent.invoke([msg.data])
             self.get_logger().info(f"Agent Response: {response}")
         except Exception as e:

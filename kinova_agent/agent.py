@@ -39,7 +39,8 @@ class KinovaAgent:
         
     def get_agent (self):
         """
-        Create and return an Agent to process user input"""
+        Create and return an Agent to process user input
+        """
         
         agent = (
             {
@@ -76,7 +77,6 @@ class KinovaAgent:
         result = self.executor.invoke(
             {"input": query, "chat_history": self.chat_history}
         )
-        self.accumulate_chat_history(query, result["output"])
         return result["output"]
             
             
