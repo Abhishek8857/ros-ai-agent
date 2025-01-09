@@ -1,6 +1,6 @@
 import re
 import rclpy
-from .nodes import AgentPublisher, AgentSubscriber
+from .nodes import AgentPublisher, AgentSubscriber, ImageCapture
 from sensor_msgs.msg import JointState
 
 WORD_TO_NUMBER = {
@@ -39,7 +39,7 @@ def publish_coordinates(coordinates: list) -> None:
     Publishes Coordinates to MoveIt
 
     Args:
-        coodirnates (list): command to decide which coordinates to publish
+        coordinates (list): command to decide which coordinates to publish
     """
     try:
         # Initialise the ROS2 Node to publish the coordinates
@@ -56,6 +56,7 @@ def publish_coordinates(coordinates: list) -> None:
         return
     finally:
         publisher_node.destroy_node()
+
 
 def subscribe_to (topic: str, type):
     """
@@ -81,6 +82,15 @@ def subscribe_to (topic: str, type):
         
         
 def get_direction_coordinates (direction: str):
+    """
+    Get the coordinates for the direction for
+
+    Args:
+        direction (str): The direction the user wants to move the Robot
+
+    Returns:
+        Joint States: returns the modified joint states corresponding the direction
+    """
     topic_name = "/joint_states" # Topic name to get Joint States
     type_name = JointState  # Type of message to be recieved
     joint_states = subscribe_to(topic=topic_name, type=type_name)
@@ -114,3 +124,17 @@ def get_direction_coordinates (direction: str):
         return
     
     return joint_states
+
+
+def capture_image():
+    # Start the ROS2 Image Subscriber Node
+    image_node = ImageCapture()
+    
+    # Spin the node until an image is processed
+    rclpy.spin_once(image_node, timeout_sec=0.1)
+    
+    # Destroy Node
+    image_node.destroy_node()
+    
+    
+    

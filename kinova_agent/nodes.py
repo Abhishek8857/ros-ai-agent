@@ -1,10 +1,14 @@
+import cv2
+import os
+import ollama
+from cv_bridge import CvBridge
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, QoSDurabilityPolicy
 from std_msgs.msg import Float64MultiArray, String
-from sensor_msgs.msg import JointState
+from sensor_msgs.msg import JointState, Image
 
 
-class AgentPublisher (Node):
+class AgentPublisher(Node):
     def __init__(self):
         super().__init__("Agent_Publisher")
         self.publisher = self.create_publisher(Float64MultiArray, "published_coordinates", 100)
@@ -17,7 +21,7 @@ class AgentPublisher (Node):
         self.get_logger().info(f"Published coordinates: {msg.data}")
 
 
-class AgentSubscriber (Node):
+class AgentSubscriber(Node):
     def __init__(self, topic: str, type):
         super().__init__("Agent_Subscriber")
         qos_profile = QoSProfile(depth=1, durability=QoSDurabilityPolicy.VOLATILE)
@@ -68,3 +72,65 @@ class AgentSubscriber (Node):
         self.recieved_message = None
         return msg
     
+
+class ImageCapture(Node):
+    def __init__(self):
+        super().__init__('image_capture_node')
+        self.subscription = self.create_subscription(Image, 
+                                                     "/camera/color/image_raw", 
+                                                     self.image_callback, 
+                                                     10)
+        self.bridge = CvBridge()
+        self.image_path = os.path.join(os.getcwd(), "images")
+        
+    
+    def clear_folder (self):
+        """
+        Delete all the files if present from the folder
+        """
+        if os.path.exists(self.image_path):
+            for file_name in os.listdir(self.image_path):
+                file_path = os.path.join(self.image_path, file_name)
+                try:
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+                        self.get_logger().info(f"Deleting previous image: {file_path}")
+                except Exception as e:
+                    self.get_logger().error(f"Failed to delete previously created images: {e}")
+        
+        
+    def image_callback(self, msg):
+        try:
+            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
+            
+            if not os.path.exists(self.image_path):
+                os.makedirs(self.image_path, exist_ok=True)
+                
+            file_name = os.path.join(self.image_path, "image.png")
+            
+            self.clear_folder()
+            
+            # Save the image and check success
+            if not cv2.imwrite(filename=file_name, img=cv_image):
+                self.get_logger().error(f"Failed to save image to: {file_name}")
+            else:
+                self.get_logger().info(f"Image successfully saved as: {file_name}")
+            
+        except Exception as e:
+            self.get_logger().error(f"Failed to process image: {e}")
+
+    def describe_image(self):
+        image = os.path.join(self.image_path, "image.png")
+        vision_model = "llama3.2-vision"
+
+        response = ollama.chat(model=vision_model, 
+                        messages=
+                        [
+                            {
+                            "role": "user",
+                            "content": "Describe what you see in this image",
+                            "images": [image]
+                            }
+                        ],
+                        )
+        self.get_logger().info(response['message']['content'])
