@@ -1,7 +1,5 @@
-import os
-import ollama
 from langchain_core.tools import tool, Tool
-from .helper_funcs import word_to_num, publish_coordinates, subscribe_to, get_direction_coordinates, capture_image
+from .helper_funcs import publish_coordinates, get_direction_coordinates, capture_image
 
 @tool   
 def move_to_home_pose ():
@@ -97,23 +95,6 @@ def describe_what_you_see():
     # Capture the image
     capture_image()
     
-    # Get the image from the saved folder location
-    image = os.path.join(os.getcwd(), "images/image.png")
-    vision_model = "llama3.2-vision"
-    
-    # Invoke the VLM Model with the saved image
-    response = ollama.chat(model=vision_model, 
-                           messages=
-                           [
-                               {
-                               "role": "user",
-                               "content": "Describe what you see in this image",
-                               "images": [image]
-                               }
-                            ],
-                           )
-    print(response['message']['content'])
-
 
 def get_tools () -> list[Tool]:
     return [move_to_home_pose,

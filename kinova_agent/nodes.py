@@ -6,6 +6,7 @@ from rclpy.node import Node
 from rclpy.qos import QoSProfile, QoSDurabilityPolicy
 from std_msgs.msg import Float64MultiArray, String
 from sensor_msgs.msg import JointState, Image
+from PIL import Image
 
 
 class AgentPublisher(Node):
@@ -75,14 +76,13 @@ class AgentSubscriber(Node):
 
 class ImageCapture(Node):
     def __init__(self):
-        super().__init__('image_capture_node')
+        super().__init__('camera_node')
         self.subscription = self.create_subscription(Image, 
                                                      "/camera/color/image_raw", 
                                                      self.image_callback, 
                                                      10)
         self.bridge = CvBridge()
-        self.image_path = os.path.join(os.getcwd(), "images")
-        
+        self.image_path = os.path.join(os.getcwd(), "image")
     
     def clear_folder (self):
         """
@@ -97,7 +97,27 @@ class ImageCapture(Node):
                         self.get_logger().info(f"Deleting previous image: {file_path}")
                 except Exception as e:
                     self.get_logger().error(f"Failed to delete previously created images: {e}")
+    
+    def describe_image(self):
+        image = cv2.imread(os.path.join(self.image_path, "image.png"))
+        vision_model = "llama3.2-vision"
+
+        processed_image = cv2.resize(image, (512, 512), interpolation=cv2.INTER_AREA)
+        processed_image = cv2.convertScaleAbs(processed_image, alpha=1.2, beta=30)
+        processed_image = Image.fromarray(cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB))
         
+        response = ollama.chat(model=vision_model, 
+                        messages=
+                        [
+                            {
+                            "role": "user",
+                            "content": "Describe all objects in brief with distinguishing characteristics, no matter how small.",
+                            "images": [processed_image]
+                            }
+                        ],
+                        )
+        self.get_logger().info(f"\033[1;32m{response['message']['content']}\033[0m")
+
         
     def image_callback(self, msg):
         try:
@@ -115,22 +135,33 @@ class ImageCapture(Node):
                 self.get_logger().error(f"Failed to save image to: {file_name}")
             else:
                 self.get_logger().info(f"Image successfully saved as: {file_name}")
-            
+                self.get_logger().info("Processing image ...")
+                self.describe_image()
         except Exception as e:
             self.get_logger().error(f"Failed to process image: {e}")
 
-    def describe_image(self):
-        image = os.path.join(self.image_path, "image.png")
-        vision_model = "llama3.2-vision"
 
-        response = ollama.chat(model=vision_model, 
-                        messages=
-                        [
-                            {
-                            "role": "user",
-                            "content": "Describe what you see in this image",
-                            "images": [image]
-                            }
-                        ],
-                        )
-        self.get_logger().info(response['message']['content'])
+class WordToNum(Node):
+    def __init__(self):
+        super().__init__("word_to_num")
+        
+        qos_profile = QoSProfile(depth=1, durability=QoSDurabilityPolicy.VOLATILE)
+        self.subscribe = self.create_subscription(String, "transcription_text", self.word_to_num_callback,qos_profile=qos_profile)
+        self.publish = self.create_publisher(String, "distance", qos_profile=qos_profile)
+        self.get_logger().info("Word to num Node initialised....")
+        self.subscribe
+
+    def word_to_num_callback(self, msg):
+        try:
+            # Convert the recieved message to a number
+            converted_number = self.word_to_num(msg.data)
+            self.get_logger().info("Converted message data into distance")
+
+            # Publish the converted number
+            number_msg = String()
+            number_msg.data = str(converted_number)
+        
+        except ValueError as e:
+            if "Invalid query" in str(e):
+                self.get_logger().info("No Number in this query. Skipping query")
+          
