@@ -6,7 +6,6 @@ from rclpy.node import Node
 from rclpy.qos import QoSProfile, QoSDurabilityPolicy
 from std_msgs.msg import Float64MultiArray, String
 from sensor_msgs.msg import JointState, Image
-from PIL import Image
 
 
 class AgentPublisher(Node):
@@ -116,29 +115,25 @@ class ImageCapture(Node):
                 self.get_logger().error(f"Failed to save image to: {file_name}")
             else:
                 self.get_logger().info(f"Image successfully saved as: {file_name}")
-            
+                self.describe_image()
         except Exception as e:
-            self.get_logger().error(f"Failed to process image: {e}")
+            self.get_logger().error(f"Failed to save image: {e}")
 
 
     def describe_image(self):
         image = os.path.join(self.image_path, "image.png")
-        processed_image_path = os.path.join(self.image_path, "processed_image.png"),
         vision_model = "llama3.2-vision"
-
-        processed_image = cv2.resize(cv2.imread(image), (512, 512), interpolation=cv2.INTER_AREA)
-        processed_image = cv2.convertScaleAbs(processed_image, alpha=1.2, beta=30)
-        processed_image = Image.fromarray(cv2.cvtColor(processed_image, cv2.COLOR_BGR2RGB))
-        processed_image.save(processed_image_path, format="PNG", optimize=True)
-        
-        response = ollama.chat(model=vision_model, 
-                        messages=
-                        [
-                            {
-                            "role": "user",
-                            "content": "Describe what you see in this image",
-                            "images": [processed_image_path]
-                            }
-                        ],
-                        )
-        self.get_logger().info(response['message']['content'])
+        try:
+            response = ollama.chat(model=vision_model, 
+                            messages=
+                            [
+                                {
+                                "role": "user",
+                                "content": "Describe what you see in this image",
+                                "images": [image]
+                                }
+                            ],
+                            )
+            self.get_logger().info(f"\033[1;32m{response['message']['content']}\033[0m")
+        except Exception as e:
+            self.get_logger().error(f"Error occured while processing image: {e}")

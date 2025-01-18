@@ -91,8 +91,6 @@ def describe_what_you_see():
     """
     Describes what the robot sees in the Camera's FOV
     """
-    
-    # Capture the image
     capture_image()
     
 
