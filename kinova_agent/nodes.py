@@ -9,20 +9,22 @@ from sensor_msgs.msg import JointState, Image
 
 
 class AgentPublisher(Node):
-    def __init__(self):
+    def __init__(self, topic: str, type):
         super().__init__("Agent_Publisher")
-        self.publisher = self.create_publisher(Float64MultiArray, "published_coordinates", 100)
+        self.topic = topic
+        self.type = type
+        self.publisher = self.create_publisher(self.type, self.topic, 100)
         self.get_logger().info("Agent Publisher initialised...")
         
     def publish_callback (self, data):
-        msg = Float64MultiArray()
+        msg = self.type()
         msg.data = data
         self.publisher.publish(msg)
-        self.get_logger().info(f"Published coordinates: {msg.data}")
+        self.get_logger().info(f"Published data: {msg.data}")
 
 
 class AgentSubscriber(Node):
-    def __init__(self, topic: str, type):
+    def __init__(self, type, topic: str):
         super().__init__("Agent_Subscriber")
         qos_profile = QoSProfile(depth=1, durability=QoSDurabilityPolicy.VOLATILE)
         self.topic = topic
@@ -102,6 +104,11 @@ class ImageCapture(Node):
     def image_callback(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
+            
+            # Preprocess the image 
+            # resized_image = cv2.resize(cv_image, (640, 480), interpolation=cv2.INTER_AREA)
+            # normalized_image = cv2.normalize(resized_image, None, 0, 255, cv2.NORM_MINMAX)
+            # guassian_blurred_image = cv2.GaussianBlur(normalized_image, (5, 5), 0)
             
             if not os.path.exists(self.image_path):
                 os.makedirs(self.image_path, exist_ok=True)

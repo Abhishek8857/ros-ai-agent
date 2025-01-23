@@ -2,9 +2,10 @@ import re
 import rclpy
 from .nodes import AgentPublisher, AgentSubscriber, ImageCapture
 from sensor_msgs.msg import JointState
+from std_msgs.msg import Float64MultiArray, Bool
 
 
-def publish_coordinates(coordinates: list) -> None:
+def publish_to(type_name, topic_name: str, coordinates: list = None, msg: bool = None) -> None:
     """
     Publishes Coordinates to MoveIt
 
@@ -13,8 +14,11 @@ def publish_coordinates(coordinates: list) -> None:
     """
     try:
         # Initialise the ROS2 Node to publish the coordinates
-        publisher_node = AgentPublisher()
-        publisher_node.publish_callback(coordinates)
+        publisher_node = AgentPublisher(type=type_name, topic=topic_name)
+        if type_name == Float64MultiArray:
+            publisher_node.publish_callback(coordinates)
+        elif type_name == Bool:
+            publisher_node.publish_callback(msg)
         
         # Spin the Node to keep it publishing
         rclpy.spin_once(publisher_node, timeout_sec=0.1)
@@ -26,9 +30,9 @@ def publish_coordinates(coordinates: list) -> None:
         return
     finally:
         publisher_node.destroy_node()
+    
 
-
-def subscribe_to (topic: str, type):
+def subscribe_to (topic_name: str, type_name):
     """
     Subscribe to a topic if available
 
@@ -38,7 +42,7 @@ def subscribe_to (topic: str, type):
     
     try:
         # Initialise the ROS2 Subscriber
-        subscriber_node = AgentSubscriber(topic=topic, type=type)
+        subscriber_node = AgentSubscriber(type=type_name, topic=topic_name)
         
         # Spin the Node to keep it publishing
         rclpy.spin_once(subscriber_node, timeout_sec=0.1)
@@ -64,15 +68,11 @@ def get_direction_coordinates (direction: str):
     topic_name = "/joint_states" # Topic name to get Joint States
     type_name = JointState  # Type of message to be recieved
     
-    joint_states = subscribe_to(topic=topic_name, type=type_name)
+    joint_states = subscribe_to(topic_name=topic_name, type_name=type_name)
     joint_states.insert(0, 0.0) # Add a flag variable for agent_listener.cpp
-
-    # topic_name = "/distance"
-    # type_name = String 
     
     distance = 0.5 # default distance we want to move 
     try:
-        # distance = subscribe_to(topic=topic_name, type=type_name)
         distance = 0.5 # default distance we want to move 
         if direction == "forward":
             joint_states[2] += distance
@@ -89,13 +89,14 @@ def get_direction_coordinates (direction: str):
             joint_states[1] += distance
             joint_states[5] += (distance * 0.25)
         elif direction == "upward":
-            joint_states[2] += (distance * 0.5)
+            joint_states[2] += (distance * 0.1)
             joint_states[4] += distance
-            joint_states[6] -= distance * 1.2
+            joint_states[6] -= distance * 1.15
         elif direction == "downward":
-            joint_states[2] -= (distance * 0.5)
-            joint_states[4] -= distance
-            joint_states[6] += distance * 1.2
+            joint_states[2] -= (distance * 0.1)
+            joint_states[4] -= distance 
+            joint_states[6] += distance * 1.15
+            
         else:
             print("Direction not found.")
             return
