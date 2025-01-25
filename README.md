@@ -4,31 +4,110 @@
 
 1. Install Ollama
 
-```
+```sh
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 2. Pull llama3.1 and llama3.2-vision
 
-```
+```sh
 ollama pull llama3.1
 ollama pull llama3.2-vision
 ```
 
 3. Clone this repository
-```
+
+```sh
 git clone https://github.com/Abhishek8857/kinova_agent.git
 ```
 
 4. Build the Package
-```
+
+```sh
 colcon build kinova_agent --symlink-install
 ```
 
 6. Source and Run the agent
-```
+
+```sh
 source <workspace-path>/install/setup.bash
 ros2 run kinova_agent kinova_agent
+```
+
+### 
+1. Clone this repository along with its submodules to your local machine:
+
+```sh
+git clone --recurse-submodules https://github.com/Abhishek8857/kinova-ros2.git
+cd /kinova-ros2
+```
+If you’ve already cloned the repository without submodules, you can initialize and update the submodules like this:
+
+```sh
+git submodule update --init --recursive
+```
+
+2. ### 2. Build the Docker Image
+
+Build the Docker image using the provided Dockerfile. This command must be run from the root of the repository where the Dockerfile is located:
+
+```sh
+bash docker_build.sh
+```
+This will create a Docker image named ros2-kortex-moveit-vision:latest, which includes the ROS 2 environment and the ros2_kortex package.
+
+**The build process may take some time. On systems with an RTX 3050, the process may freeze when building Gazebo dependencies. Grabbing a coffee is recommended if the process stalls.**
+
+### 3. Run the Docker Container
+
+Once the Docker image is built, you can run the container interactively using:
+
+```sh
+cd docker_run/
+bash docker_vision.sh
+```
+
+
+This will start a new container from the ros2-kortex:latest image, allowing you to interact with the ROS 2 environment.
+
+### 4. Running ROS 2 Nodes
+
+After entering the container, you can source the ROS 2 and workspace setup files and run ROS 2 nodes or launch files:
+
+```sh
+# Source ROS 2 environment
+source /opt/ros/humble/setup.bash
+
+# Source the workspace overlay
+source /colcon_ws/install/setup.bash
+
+```
+### 5. Running Moveit2 Simulation
+
+```sh
+ros2 launch kinova_gen3_7dof_robotiq_2f_85_moveit_config robot.launch.py \
+  robot_ip:=yyy.yyy.yyy.yyy \
+  use_fake_hardware:=true
+```
+
+* Remember to open a new terminal for each of the following commands and:
+
+  ```sh
+    cd /kinova-ros2/docker_run/
+    bash docker_exec.sh
+  ```
+
+### 6. Launching the Camera Node
+
+```sh
+source ~/colcon_ws/install/setup.bash
+ros2 launch kinova_vision kinova_vision.launch.py 
+```
+
+### 7. Run the Agent Listener 
+
+```sh
+ros2 run agent_listener agent_listener
 ```
 
 <!-- 
