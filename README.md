@@ -17,7 +17,7 @@ ollama pull llama3.2-vision
 
 3. Clone this repository
 ```
-git clone https://git-ce.rwth-aachen.de/wzl-mq-ms/docker-ros/ros2/ai-agent-ros.git --branch devel_abhishek
+git clone https://github.com/Abhishek8857/kinova_agent.git
 ```
 
 4. Build the Package
