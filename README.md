@@ -34,8 +34,7 @@ source <workspace-path>/install/setup.bash
 ros2 run kinova_agent kinova_agent
 ```
 
-### 
-1. Clone this repository along with its submodules to your local machine:
+### 1. Clone this repository along with its submodules to your local machine:
 
 ```sh
 git clone --recurse-submodules https://github.com/Abhishek8857/kinova-ros2.git
@@ -47,7 +46,7 @@ If you’ve already cloned the repository without submodules, you can initialize
 git submodule update --init --recursive
 ```
 
-2. ### 2. Build the Docker Image
+### 2. Build the Docker Image
 
 Build the Docker image using the provided Dockerfile. This command must be run from the root of the repository where the Dockerfile is located:
 
