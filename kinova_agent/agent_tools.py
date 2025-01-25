@@ -1,3 +1,6 @@
+import os
+import signal
+import subprocess
 from langchain_core.tools import tool, Tool
 from .helper_funcs import publish_to, get_direction_coordinates, capture_image
 from std_msgs.msg import Float64MultiArray, Bool
@@ -110,22 +113,34 @@ def describe_what_you_see():
 @tool 
 def stop():
     """
-    Stops the Robot movement
+    Stops the Robot movement by killing all the active terminals on the system
     """
-    publish_to(type_name=BOOL_TYPE, topic_name=STOP_TOPIC, msg=True)
+    
+    # List of all terminal processes
+    terminal_processes = ["gnome-terminal", "xterm", "konsole", "terminator", "mate-terminal", "tilix"]
+    for terminal in terminal_processes:
+        try:
+            # Get the process ID of the terminal
+            process_ids = subprocess.check_output(["pgrep", terminal]).decode().splitlines()
+            
+            for pid in process_ids:
+                # Kill the terminals
+                os.kill(int(pid), signal.SIGTERM)
+        except subprocess.CalledProcessError:
+            pass
 
 
 def get_tools () -> list[Tool]:
-    return [move_to_home_pose,
-            move_to_retract_pose,
+    return [describe_what_you_see,
             move_to_zero_position,
-            move_forward, 
-            move_backward,
-            move_left,
-            move_right,
-            move_upwards,
+            move_to_retract_pose,
+            move_to_home_pose,
             move_downwards,
-            open_gripper, 
+            move_backward,
             close_gripper,
-            stop,
-            describe_what_you_see]
+            open_gripper, 
+            move_forward, 
+            move_upwards,
+            move_right,
+            move_left,
+            stop,]
