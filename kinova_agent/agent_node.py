@@ -34,7 +34,7 @@ class Agent(Node):
         # Invoke the agent and handle the response
         try:
             self.get_logger().info(f"Invoking Agent with the query: [{msg.data}]")
-            response = self.agent.invoke([msg.data])
+            response = self.agent.invoke(msg.data)
             self.get_logger().info(f"Agent Response: {response}")
         except Exception as e:
             self.get_logger().error(f"Error executing tool: {e}")

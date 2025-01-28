@@ -1,4 +1,3 @@
-import re
 import rclpy
 from .nodes import AgentPublisher, AgentSubscriber, ImageCapture
 from sensor_msgs.msg import JointState
@@ -84,19 +83,20 @@ def get_direction_coordinates (direction: str):
             joint_states[6] += (distance * 0.3)
         elif direction == "left":
             joint_states[1] -= distance
-            joint_states[5] -= (distance * 0.25)
         elif direction == "right":
             joint_states[1] += distance
-            joint_states[5] += (distance * 0.25)
         elif direction == "upward":
-            joint_states[2] += (distance * 0.1)
+            joint_states[2] -= (distance * 0.2)
             joint_states[4] += distance
-            joint_states[6] -= distance * 1.15
+            joint_states[6] -= distance * 1.2
         elif direction == "downward":
-            joint_states[2] -= (distance * 0.1)
+            joint_states[2] += (distance * 0.2)
             joint_states[4] -= distance 
-            joint_states[6] += distance * 1.15
-            
+            joint_states[6] += distance * 1.2
+        elif direction == "clockwise":
+            joint_states[7] -= distance * 3.25
+        elif direction == "anticlockwise":
+            joint_states[7] += distance * 3.25
         else:
             print("Direction not found.")
             return

@@ -110,6 +110,22 @@ def describe_what_you_see():
     """
     capture_image()
     
+@tool
+def rotate_the_gripper_clockwise():
+    """
+    Rotate the gripper by 90 Degrees in clockwise direction
+    """
+    publish_to(type_name=COORDINATE_TYPE, topic_name=COORDINATE_TOPIC, coordinates=get_direction_coordinates("clockwise"))
+
+
+@tool 
+def rotate_the_gripper_anticlockwise():
+    """
+    Rotate the gripper by 90 Degrees in anticlockwise direction
+    """
+    publish_to(type_name=COORDINATE_TYPE, topic_name=COORDINATE_TOPIC, coordinates=get_direction_coordinates("anticlockwise"))
+
+    
 @tool 
 def stop():
     """
@@ -131,7 +147,9 @@ def stop():
 
 
 def get_tools () -> list[Tool]:
-    return [describe_what_you_see,
+    return [rotate_the_gripper_anticlockwise,
+            rotate_the_gripper_clockwise,
+            describe_what_you_see,
             move_to_zero_position,
             move_to_retract_pose,
             move_to_home_pose,
