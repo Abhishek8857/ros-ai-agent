@@ -2,38 +2,39 @@
 
 ## Getting started
 
-1. Install Ollama
+### 1. Install Ollama
 
 ```sh
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-2. Pull llama3.1 and llama3.2-vision
+### 2. Pull llama3.1 and llama3.2-vision
 
 ```sh
 ollama pull llama3.1
 ollama pull llama3.2-vision
 ```
 
-3. Clone this repository
+### 3. Clone this repository
 
 ```sh
 git clone https://github.com/Abhishek8857/kinova_agent.git
 ```
 
-4. Build the Package
+### 4. Build the Package
 
 ```sh
 colcon build kinova_agent --symlink-install
 ```
 
-6. Source and Run the agent
+### 6. Source and Run the agent
 
 ```sh
 source <workspace-path>/install/setup.bash
 ros2 run kinova_agent kinova_agent
 ```
 
+## Kinova Robot 
 ### 1. Clone this repository along with its submodules to your local machine:
 
 ```sh
@@ -66,7 +67,6 @@ cd docker_run/
 bash docker_vision.sh
 ```
 
-
 This will start a new container from the ros2-kortex:latest image, allowing you to interact with the ROS 2 environment.
 
 ### 4. Running ROS 2 Nodes
@@ -89,6 +89,20 @@ ros2 launch kinova_gen3_7dof_robotiq_2f_85_moveit_config robot.launch.py \
   use_fake_hardware:=true
 ```
 
+
+To work with a physical robot and generate/execute paths with MoveIt run the following:
+
+For Gen3:
+```sh
+ros2 launch kinova_gen3_7dof_robotiq_2f_85_moveit_config robot.launch.py \
+  robot_ip:=192.168.1.10
+```
+For Gen3-Lite:
+```sh
+ros2 launch kinova_gen3_lite_moveit_config robot.launch.py \
+  robot_ip:=192.168.1.10
+```
+
 * Remember to open a new terminal for each of the following commands and:
 
   ```sh
@@ -108,6 +122,38 @@ ros2 launch kinova_vision kinova_vision.launch.py
 ```sh
 ros2 run agent_listener agent_listener
 ```
+
+
+## Whisper ROS
+To run whisper_ros with CUDA, first, you must install the [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
+
+### 1. Clone the following repository in a new workspace
+
+```sh
+cd ~/ros2_ws/src
+git clone https://github.com/Abhishek8857/whisper_ros.git
+git clone https://github.com/mgonzs13/audio_common.git
+pip3 install -r whisper_ros/requirements.txt
+```
+
+### 2. Build the workspace
+```sh
+cd ~/ros2_ws/
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --cmake-args -DGGML_CUDA=ON # add this for CUDA
+```
+
+### 3. Launch Silero for VAD and Whisper for State
+```sh
+ros2 launch whisper_bringup whisper.launch.py
+```
+
+### 4. Run the Whisper node to publish the transcribed message
+Source the workspace and run the following command
+```sh
+ros2 run whisper_listen to_text
+```
+
 
 <!-- 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
