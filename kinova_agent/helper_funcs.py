@@ -9,7 +9,8 @@ def publish_to(type_name, topic_name: str, coordinates: list = None, msg: bool =
     Publishes Coordinates to MoveIt
 
     Args:
-        coordinates (list): command to decide which coordinates to publish
+        coordinates (list) = None :  Desired coordinates to publish
+        msg (bool) = None : Desired Bool Message to publish
     """
     try:
         # Initialise the ROS2 Node to publish the coordinates
@@ -37,6 +38,7 @@ def subscribe_to (topic_name: str, type_name):
 
     Args:
         topic (str): Topic name
+        type_name : Type of the message to be recieved
     """
     
     try:
@@ -86,12 +88,12 @@ def get_direction_coordinates (direction: str):
         elif direction == "right":
             joint_states[1] += distance
         elif direction == "upward":
-            joint_states[2] -= (distance * 0.2)
-            joint_states[4] += distance
-            joint_states[6] -= distance * 1.2
+            joint_states[2] += (distance * 0.2)
+            joint_states[4] += distance * 1.2
+            joint_states[6] -= distance
         elif direction == "downward":
             joint_states[2] += (distance * 0.2)
-            joint_states[4] -= distance 
+            joint_states[4] -= distance
             joint_states[6] += distance * 1.2
         elif direction == "clockwise":
             joint_states[7] -= distance * 3.25

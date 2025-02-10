@@ -65,7 +65,7 @@ class KinovaAgent:
         return executor
     
     
-    def invoke (self, query: str, delay: float = 1.0) -> str:
+    def invoke (self, query: str) -> str:
         """
         Invoke the agent with the user query and return the agent's response
 
@@ -88,9 +88,7 @@ class KinovaAgent:
                     
                 response = result["output"]
                 responses.append(str(response))
-                print(f"Processed command: '{command.strip()}' -> Response: {response}")
-                
-                time.sleep(delay)
+                print(f"\033[92mProcessed command: '{command.strip()}' -> Response: {response}\033[0m")
                 final_response = "\n".join(responses)
             return final_response
 

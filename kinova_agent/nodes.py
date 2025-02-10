@@ -104,12 +104,7 @@ class ImageCapture(Node):
     def image_callback(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
-            
-            # Preprocess the image 
-            # resized_image = cv2.resize(cv_image, (640, 480), interpolation=cv2.INTER_AREA)
-            # normalized_image = cv2.normalize(resized_image, None, 0, 255, cv2.NORM_MINMAX)
-            # guassian_blurred_image = cv2.GaussianBlur(normalized_image, (5, 5), 0)
-            
+
             if not os.path.exists(self.image_path):
                 os.makedirs(self.image_path, exist_ok=True)
                 

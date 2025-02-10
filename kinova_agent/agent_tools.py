@@ -145,6 +145,11 @@ def stop():
         except subprocess.CalledProcessError:
             pass
 
+@tool 
+def execute_pick_and_place_routine ():
+    """
+    Executes the pick and place routine by executing bash scripts
+    """
 
 def get_tools () -> list[Tool]:
     return [rotate_the_gripper_anticlockwise,
