@@ -10,12 +10,17 @@ COORDINATE_TOPIC = "published_coordinates"
 BOOL_TYPE = Bool    
 STOP_TOPIC = "stop_robot"
 
+SCRIPT_DIR = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
+CONTACT_DIR = "/home/abhishek/workspaces/kinova_ws/src/contact-graspnet/docker_run"
+
 @tool   
 def move_to_home_pose ():
     """
     Moves the Robot arm coordinates for home pose
     """
-    home_pose_coordinates = [0.0, 0.0, -0.8650, -3.15, -2.13, 0.006, -1.2, 1.55]
+    home_pose_coordinates = [0.0, 0.0, -0.7650, -3.15, -2.13, 0.006, -1.2, 1.55]
+    # home_pose_coordinates = [1.0, 0.28, -0.2, 0.5, 0.0, 0.0, 0.0, 1.0]
+
     publish_to(type_name=COORDINATE_TYPE, topic_name=COORDINATE_TOPIC, coordinates=home_pose_coordinates)
        
 @tool
@@ -107,8 +112,11 @@ def describe_what_you_see():
     """
     Describes what the robot sees in the Camera's FOV
     """
-    capture_image()
-    
+    try:
+        capture_image()
+    except Exception as e:
+        print(e)
+        
 @tool
 def rotate_the_gripper_clockwise():
     """
@@ -130,8 +138,7 @@ def launch_vision ():
     """
     Starts the vision module of the Robot
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "vision.sh")
+    script_path = os.path.join(SCRIPT_DIR, "vision.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -146,8 +153,7 @@ def launch_the_fake_robot():
     """
     Launches the Fake robot in simulation
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "fake_robot_launch.sh")
+    script_path = os.path.join(SCRIPT_DIR, "fake_robot_launch.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -162,8 +168,7 @@ def launch_the_robot():
     """
     Launches and connects to the real robot
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "robot_launch.sh")
+    script_path = os.path.join(SCRIPT_DIR, "robot_launch.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -178,8 +183,7 @@ def launch_the_listener():
     """
     Launches the moveit interface to process basic movememnts of the robot
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "agent_listener.sh")
+    script_path = os.path.join(SCRIPT_DIR, "agent_listener.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -194,8 +198,7 @@ def launch_contact_graspnet():
     """
     Launches the contact graspnet for grasp pose estimation
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/contact-graspnet/docker_run"
-    script_path = os.path.join(script_dir, "contact_graspnet.sh")  
+    script_path = os.path.join(CONTACT_DIR, "contact_graspnet.sh")  
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -210,8 +213,7 @@ def pick_the_objects_in_front():
     """
     Predicts the best grasp pose for the objects in the field of view
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "kinova_ops.sh")
+    script_path = os.path.join(SCRIPT_DIR, "kinova_ops.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -226,8 +228,7 @@ def launch_the_task_constructor ():
     """
     Runs the stack for generating grasps and picking up objects in field of view
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "pick_n_place.sh")
+    script_path = os.path.join(SCRIPT_DIR, "pick_n_place.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 
@@ -242,8 +243,7 @@ def execute_the_motion_plan ():
     """
     Executes the motion plan by executing bash scripts
     """
-    script_dir = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-    script_path = os.path.join(script_dir, "motion_plan.sh")
+    script_path = os.path.join(SCRIPT_DIR, "motion_plan.sh")
     try: 
         subprocess.Popen(["terminator", 
                           "-e", 

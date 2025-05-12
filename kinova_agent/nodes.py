@@ -125,6 +125,7 @@ class ImageCapture(Node):
     def describe_image(self):
         image = os.path.join(self.image_path, "image.png")
         vision_model = "llama3.2-vision"
+        self.get_logger().info("Processing the saved image...")
         try:
             response = ollama.chat(model=vision_model, 
                             messages=
