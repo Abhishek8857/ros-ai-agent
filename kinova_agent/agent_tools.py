@@ -110,7 +110,7 @@ def close_gripper():
 @tool
 def describe_what_you_see():
     """
-    Describes what the robot sees in the Camera's FOV
+    Takes a picture and Describes what the robot sees in the Camera's FOV 
     """
     try:
         capture_image()

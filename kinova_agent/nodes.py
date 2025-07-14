@@ -83,7 +83,7 @@ class ImageCapture(Node):
                                                      self.image_callback, 
                                                      10)
         self.bridge = CvBridge()
-        self.image_path = os.path.join(os.getcwd(), "images")
+        self.image_path = os.path.join(os.getcwd(), "src", "kinova_agent", "images")
     
     
     def clear_folder (self):
