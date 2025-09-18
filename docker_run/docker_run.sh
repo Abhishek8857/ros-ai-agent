@@ -21,6 +21,4 @@ docker run \
 		--env RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION} \
 		--env DISPLAY=$DISPLAY \
         --name agent \
-        -v "$REPO_DIR:/agent_ws/src/ros-ai-agent:rw" \
-        -w /workspace/ \
-        ai-agent:latest \
+        agent:latest \

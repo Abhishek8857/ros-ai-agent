@@ -1,3 +1,9 @@
+FROM  ad8857/ros-llm:v1.0
+
+COPY /colcon_ws /colcon_ws/
+
+RUN colcon build --symlink-install
+
 # ARG ROS_DISTRO=humble
 # FROM osrf/ros:${ROS_DISTRO}-desktop
 
