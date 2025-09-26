@@ -9,6 +9,7 @@ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 xhost +
 docker run \
 		-it \
+		--rm \
 		--net=host \
 		--pid=host \
 		--ipc=host \
@@ -18,7 +19,11 @@ docker run \
 		-v /dev:/dev \
 		-v $HOME/.ros/log:/.ros/log \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v "$REPO_DIR:/ros-ai-agent:rw" \
+        -v $PARENT_DIR:/root/workspaces/kinova_ws/src:rw \
+		-w /ros-ai-agent \
 		--env RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION} \
 		--env DISPLAY=$DISPLAY \
         --name agent \
         agent:latest \
+		/entrypoint_scripts/entrypoint_docker_run.sh \

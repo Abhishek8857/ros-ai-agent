@@ -3,3 +3,4 @@
 .vscode/browse.vc.db-wal
 .vscode/c_cpp_properties.json
 .vscode/settings.json
+langsmith_api_key.config

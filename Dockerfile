@@ -1,6 +1,24 @@
-FROM  ad8857/ros-llm:v1.0
+FROM  ad8857/ros-llm-gpt:v1.0
 
-COPY /colcon_ws /colcon_ws/
+# Install Langchain, Langgraph and other libraries
+RUN pip install --no-cache-dir -U \
+    langchain \
+    langchain_ollama \
+    langgraph \
+    langgraph-supervisor \
+    langgraph-swarm \
+    langchain-mcp-adapters \
+    langmem \
+    agentevals \
+    langgraph-cli[inmem] \
+    langsmith
+
+COPY /colcon_ws/ /colcon_ws/
+COPY /entrypoint_scripts/ /entrypoint_scripts/
+
+RUN chmod +x entrypoint_scripts/*
+
+WORKDIR /colcon_ws/
 
 RUN colcon build --symlink-install
 
@@ -30,9 +48,6 @@ RUN colcon build --symlink-install
 #     python3-vcstool \
 #     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
 #     && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# # Install Langchain, Langgraph and other libraries
-# RUN pip install --no-cache-dir -U langchain langchain_ollama langgraph langsmith
 
 # # Source ROS and workspace automatically
 # RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
