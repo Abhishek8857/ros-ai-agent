@@ -1,7 +1,7 @@
 from langchain_ollama import ChatOllama
 from .agent_tools import get_tools
 
-language_model = "llama3.1"
+language_model = "gpt-oss:20b"
 language_model_temperature = 0.8
 
 def get_llm():
