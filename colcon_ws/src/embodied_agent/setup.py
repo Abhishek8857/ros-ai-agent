@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'embodied_agent = embodied_agent.agent_node:main'
         ],
     },
 )

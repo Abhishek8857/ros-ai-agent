@@ -5,6 +5,7 @@ RUN pip install --no-cache-dir -U \
     langchain \
     langchain_ollama \
     langgraph \
+    langgraph-sdk \
     langgraph-supervisor \
     langgraph-swarm \
     langchain-mcp-adapters \

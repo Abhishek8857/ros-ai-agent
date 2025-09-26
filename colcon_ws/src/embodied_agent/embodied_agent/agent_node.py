@@ -6,19 +6,20 @@ from .agent import embodied_agent
 
 class Agent(Node):
     def __init__(self):
-        super().__init__("Embodied Agent")
+        super().__init__("Embodied_Agent")
         qos_profile: QoSProfile = QoSProfile(depth=1, durability=QoSDurabilityPolicy.VOLATILE)
-        self.subscription = self.create_subscription(String, "query", self.query_callback(), qos_profile=qos_profile)
-        self.agent = embodied_agent()
+        self.subscription = self.create_subscription(String, "query", self.query_callback, qos_profile=qos_profile)
+        self.agent = embodied_agent
         
         self.get_logger().info("Agent node initialised!")
         
         self.message_recieved: bool = False
     
     
+    
     def query_callback (self, msg):
         """Callback function to parse the recieved query to the Agent"""
-        self.get_logger().info("Waitinf of user query")
+        self.get_logger().info("Waiting of user query")
         
         # Wait foe the User query
         if not self.message_recieved:
@@ -29,10 +30,10 @@ class Agent(Node):
         
         # Invoke the Agent with user query and handle failure
         try:
-            self.get_logger.info(f"Invoking Agent with User Query")
+            self.get_logger().info(f"Invoking Agent with User Query")
             self.agent.invoke(msg.data)
         except Exception as e:
-            self.get_logger().info(f"Error executinf user Query: {e}")
+            self.get_logger().info(f"Error executing user Query: {e}")
         finally:
             self.message_recieved = False
             self.get_logger().info("Waiting for the next message...\n")
