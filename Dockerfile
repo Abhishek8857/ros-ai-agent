@@ -1,5 +1,10 @@
-FROM  ad8857/ros-llm-gpt:v1.0
+FROM  ad8857/ros-llm:llama3.1-8b
 
+ENV CUDA_VISIBLE_DEVICES=0 \
+    OLLAMA_USE_GPU=1 \ 
+    ROS_DISTRO=humble \
+    ROS_DOMAIN_ID=0
+    
 # Install Langchain, Langgraph and other libraries
 RUN pip install --no-cache-dir -U \
     langchain \

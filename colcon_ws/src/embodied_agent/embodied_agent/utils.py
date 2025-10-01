@@ -1,2 +1,2 @@
 def format_message (msg: str) -> dict:
-    pass
+    return {"message": [{"role" : "user" , "content": msg}]}

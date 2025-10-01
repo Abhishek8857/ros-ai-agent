@@ -9,11 +9,7 @@ from .tools import get_tools
 from .prompts import get_prompts
 
 embodied_agent = create_react_agent(model=get_model(),
-                           tools=get_tools(),
-                           prompt=get_prompts(),
-                           pre_model_hook=get_pre_model_hook(),
-                           post_model_hook=get_post_model_hook(),
-                           response_format=get_response_format())
+                           tools=get_tools())
 
 
 png_data = embodied_agent.get_graph().draw_mermaid_png()

@@ -3,6 +3,7 @@ from rclpy.node import Node
 from rclpy.qos import QoSDurabilityPolicy, QoSProfile
 from std_msgs.msg import String 
 from .agent import embodied_agent
+from .utils import format_message
 
 class Agent(Node):
     def __init__(self):
@@ -21,7 +22,7 @@ class Agent(Node):
         """Callback function to parse the recieved query to the Agent"""
         self.get_logger().info("Waiting of user query")
         
-        # Wait foe the User query
+        # Wait for the User query
         if not self.message_recieved:
             self.message_recieved = True
         
