@@ -1,1 +1,1 @@
-docker build -t agent -f Dockerfile .
+docker build -t agent -f Dockerfile2 .

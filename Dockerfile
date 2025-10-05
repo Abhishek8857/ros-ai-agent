@@ -1,12 +1,39 @@
-FROM  ad8857/ros-llm:llama3.1-8b
+ARG ROS_DISTRO=humble
+FROM osrf/ros:${ROS_DISTRO}-desktop
 
-ENV CUDA_VISIBLE_DEVICES=0 \
+# Source ROS and workspace automatically
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+    
+ENV DEBIAN_FRONTEND=noninteractive \
+    CUDA_VISIBLE_DEVICES=0 \
     OLLAMA_USE_GPU=1 \ 
     ROS_DISTRO=humble \
     ROS_DOMAIN_ID=0
-    
+
+# Install required dependencies
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    wget \
+    lsb-release \
+    gnupg \
+    build-essential \
+    cmake \
+    git \
+    pciutils \
+    iputils-ping \
+    ament-cmake \
+    python3-pip \
+    python3-colcon-common-extensions \
+    python3-vcstool \
+    ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Install Langchain, Langgraph and other libraries
-RUN pip install --no-cache-dir -U \
+RUN pip install --no-cache-dir --pre -U \
+    langchain \
+    langchain-core \
+    langchain-anthropic \
+    langchain-aws \
+    langchain-openai \
     langchain \
     langchain_ollama \
     langgraph \
@@ -16,8 +43,7 @@ RUN pip install --no-cache-dir -U \
     langchain-mcp-adapters \
     langmem \
     agentevals \
-    langgraph-cli[inmem] \
-    langsmith
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY /colcon_ws/ /colcon_ws/
 COPY /entrypoint_scripts/ /entrypoint_scripts/

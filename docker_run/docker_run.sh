@@ -20,7 +20,7 @@ docker run \
 		-v $HOME/.ros/log:/.ros/log \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
         -v "$REPO_DIR:/ros-ai-agent:rw" \
-        -v $PARENT_DIR:/root/workspaces/kinova_ws/src:rw \
+        -v $PARENT_DIR:/root/workspaces/thesis_ws/src:rw \
 		-w /ros-ai-agent \
 		--env RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION} \
 		--env DISPLAY=$DISPLAY \
