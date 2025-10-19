@@ -1,1 +1,1 @@
-docker exec -it agent bash
+docker exec -it ros_ai_agent bash
