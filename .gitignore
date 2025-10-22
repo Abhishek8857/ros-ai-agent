@@ -2,3 +2,5 @@
 graph.png
 /*.config
 /temp.py
+/*log
+log/COLCON_IGNORE
