@@ -26,6 +26,6 @@ docker run \
 		-w /ros-ai-agent \
 		-e RMW_IMPLEMENTATION \
 		-e DISPLAY \
-		--name ros_ai_agent \
+		--name agent \
         agent:latest \
 		/entrypoint_scripts/entrypoint_agent_run.sh \
