@@ -4,14 +4,15 @@ import subprocess
 from langchain_core.tools import tool, Tool
 from .helper_funcs import publish_to, get_direction_coordinates, capture_image
 from std_msgs.msg import Float64MultiArray, Bool
+import threading
 
 COORDINATE_TYPE = Float64MultiArray
 COORDINATE_TOPIC = "published_coordinates"
 BOOL_TYPE = Bool    
 STOP_TOPIC = "stop_robot"
 
-SCRIPT_DIR = "/home/abhishek/workspaces/kinova_ws/src/kinova-ros2/docker_run"
-CONTACT_DIR = "/home/abhishek/workspaces/kinova_ws/src/contact-graspnet/docker_run"
+SCRIPT_DIR = "/home/hiwi/workspaces/kinova_ws/kinova-ros2/docker_run"
+CONTACT_DIR = "/home/hiwi/workspaces/kinova_ws/contact-graspnet/docker_run"
 
 @tool   
 def move_to_home_pose ():
@@ -140,9 +141,13 @@ def launch_vision ():
     """
     script_path = os.path.join(SCRIPT_DIR, "vision.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Vision Module launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
@@ -155,9 +160,13 @@ def launch_the_fake_robot():
     """
     script_path = os.path.join(SCRIPT_DIR, "fake_robot_launch.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Fake Robot launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
@@ -168,11 +177,15 @@ def launch_the_robot():
     """
     Launches and connects to the real robot
     """
-    script_path = os.path.join(SCRIPT_DIR, "robot_launch.sh")
+    script_path_robot = os.path.join(SCRIPT_DIR, "robot_launch.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_robot}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Robot launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
@@ -185,9 +198,13 @@ def launch_the_listener():
     """
     script_path = os.path.join(SCRIPT_DIR, "agent_listener.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Listener launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
@@ -200,9 +217,13 @@ def launch_contact_graspnet():
     """
     script_path = os.path.join(CONTACT_DIR, "contact_graspnet.sh")  
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Vision Module launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
@@ -215,10 +236,22 @@ def pick_the_objects_in_front():
     """
     script_path = os.path.join(SCRIPT_DIR, "kinova_ops.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,          # capture stdout
+            stderr=subprocess.STDOUT,        # redirect stderr into stdout
+            text=True                        # get strings instead of bytes
+        )
+
         print("Kinova Ops Module launched in a new terminal")
+        
+        for line in process.stdout:
+            if "Received task execution status: 1" in line:
+                process.kill()
+                print("Kinova Ops Module killed.")
+                break
+        
     except Exception as e:
         print("Error launching the terminator: ", e)
         
@@ -230,9 +263,13 @@ def launch_the_task_constructor ():
     """
     script_path = os.path.join(SCRIPT_DIR, "pick_n_place.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Pick and Place node launched in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)  
@@ -245,14 +282,84 @@ def execute_the_motion_plan ():
     """
     script_path = os.path.join(SCRIPT_DIR, "motion_plan.sh")
     try: 
-        subprocess.Popen(["terminator", 
-                          "-e", 
-                          f"bash -c 'source /opt/ros/humble/setup.bash && {script_path}; exec bash'"])
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
         print("Motion Plan executed in a new terminal")
     except Exception as e:
         print("Error launching the terminator: ", e)
    
-   
+@tool
+def launch_all_containers():
+    """
+    Launches all the necessary containers for the Kinova Robot operation
+    """
+    script_path_robot = os.path.join(SCRIPT_DIR, "robot_launch.sh")
+    try: 
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_robot}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
+        print("Robot launched in a new terminal")
+    except Exception as e:
+        print("Error launching the terminator: ", e)
+    script_path_vision = os.path.join(SCRIPT_DIR, "vision.sh")
+    try: 
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_vision}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
+        print("Fake Robot launched in a new terminal")
+    except Exception as e:
+        print("Error launching the terminator: ", e)
+    script_path_listener = os.path.join(SCRIPT_DIR, "agent_listener.sh")
+    try: 
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_listener}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
+        print("Listener launched in a new terminal")
+    except Exception as e:
+        print("Error launching the terminator: ", e)
+    script_path_p_n_p = os.path.join(SCRIPT_DIR, "pick_n_place.sh")
+    try: 
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_p_n_p}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
+        print("Pick and Place node launched in a new terminal")
+    except Exception as e:
+        print("Error launching the terminator: ", e) 
+    script_path_grasp = os.path.join(CONTACT_DIR, "contact_graspnet.sh")  
+    try: 
+        cmd = f"source /opt/ros/humble/setup.bash && {script_path_grasp}"
+        # If you want it to run in the background and NOT block:
+        process = subprocess.Popen(
+            ["bash", "-c", cmd],
+            stdout=subprocess.PIPE,   # or subprocess.DEVNULL if you don't care
+            stderr=subprocess.PIPE    # or subprocess.DEVNULL
+        )
+        print("Vision Module launched in a new terminal")
+    except Exception as e:
+        print("Error launching the terminator: ", e)
+
+
 @tool 
 def stop():
     """
@@ -280,6 +387,7 @@ def get_tools () -> list[Tool]:
             pick_the_objects_in_front,
             execute_the_motion_plan,
             launch_contact_graspnet,
+            launch_all_containers,
             describe_what_you_see,
             move_to_zero_position, 
             launch_the_fake_robot,
