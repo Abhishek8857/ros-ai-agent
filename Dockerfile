@@ -26,15 +26,15 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
     
 RUN pip install --no-cache-dir -U \
-    langchain==1.0.2 \
-    langchain-core==1.0.0 \
-    langchain-anthropic==1.0.0 \
+    langchain==1.0.5     \
+    langchain-core==1.0.4 \
+    langchain-anthropic==1.0.3 \
     langchain-aws==1.0.0 \
-    langchain-openai==1.0.1 \
+    langchain-openai==1.0.2 \
     langchain_ollama==1.0.0 \
-    langgraph==1.0.1 \
+    langgraph==1.0.3 \
     langgraph-sdk==0.2.9 \
-    langmem==0.0.28 \
+    langmem==0.0.30 \
     agentevals==0.0.9 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
