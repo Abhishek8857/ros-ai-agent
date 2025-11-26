@@ -4,3 +4,4 @@ graph.png
 /temp.py
 /*log
 log/COLCON_IGNORE
+**/**.code-workspace
