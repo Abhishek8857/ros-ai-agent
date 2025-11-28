@@ -26,6 +26,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
     
 RUN pip install --no-cache-dir -U \
+    python-dotenv \
     langchain==1.0.5     \
     langchain-core==1.0.4 \
     langchain-anthropic==1.0.3 \

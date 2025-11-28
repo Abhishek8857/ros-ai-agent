@@ -1,14 +1,17 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(dirname $(readlink -f $0))"
+# Get directory paths
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 REPO_DIR="$(realpath "${SCRIPT_DIR}/..")"	
 PARENT_DIR="$(realpath "${REPO_DIR}/..")"
 
 # Set ROS middleware
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
+# Allow GUI access
+xhost +local:docker
 
-xhost +
+# Run Docker
 docker run \
 		-it \
 		--rm \
@@ -28,4 +31,4 @@ docker run \
 		-e DISPLAY \
 		--name agent \
         agent:latest \
-		/entrypoint_scripts/entrypoint_agent_run.sh \
+		/entrypoint_scripts/entrypoint_agent_run.sh 

@@ -26,7 +26,7 @@ docker run \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v "$REPO_DIR:/ros-ai-agent:rw" \
     -v "$PARENT_DIR:/root/workspaces/thesis_ws/src:rw" \
-    -w /colcon_ws \
+    -w /ros-ai-agent \
     -e RMW_IMPLEMENTATION \
     -e DISPLAY \
     --name ros_ai_agent \
