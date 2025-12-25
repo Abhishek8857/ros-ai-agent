@@ -2,6 +2,7 @@
 graph.png
 /*.config
 /temp.py
-/*log
+**/**log
 log/COLCON_IGNORE
 **/**.code-workspace
+**/**.vscode/*

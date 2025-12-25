@@ -2,7 +2,10 @@ FROM ad8857/ros-llm:llama3.1-8b
 
 # Source ROS and workspace automatically
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-    
+
+# Use bash for all RUN commands after this line
+SHELL ["/bin/bash", "-c"]
+
 ENV DEBIAN_FRONTEND=noninteractive \
     CUDA_VISIBLE_DEVICES=0 \
     OLLAMA_USE_GPU=1 \ 
@@ -39,6 +42,7 @@ RUN pip install --no-cache-dir -U \
     agentevals==0.0.9 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+
 COPY /colcon_ws/ /colcon_ws/
 COPY /entrypoint_scripts/ /entrypoint_scripts/
 
@@ -46,7 +50,8 @@ RUN chmod +x entrypoint_scripts/*
 
 WORKDIR /colcon_ws/
 
-RUN colcon build --symlink-install
+RUN source /opt/ros/${ROS_DISTRO}/setup.bash && colcon build --symlink-install
+
 
 
 # FOR GPG KEY Error
