@@ -6,3 +6,4 @@ graph.png
 log/COLCON_IGNORE
 **/**.code-workspace
 **/**.vscode/*
+**/**captures/
