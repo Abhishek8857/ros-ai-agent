@@ -1,9 +1,11 @@
-.vscode/*
-graph.png
+**/**.vscode/*
+
 /*.config
-/temp.py
+
 **/**log
 log/COLCON_IGNORE
+
 **/**.code-workspace
-**/**.vscode/*
+
 **/**captures/
+**/**predictions/*.npz
