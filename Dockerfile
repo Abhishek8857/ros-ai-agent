@@ -42,7 +42,7 @@ RUN pip install --no-cache-dir -U \
     agentevals==0.0.9 \
     google-genai \
     Pillow \
-    numpy==1.26.0 \
+    numpy==1.24.0 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
