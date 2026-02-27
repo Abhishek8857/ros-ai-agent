@@ -25,26 +25,30 @@ ENV DEBIAN_FRONTEND=noninteractive \
 #     langgraph-sdk \
 #     langmem \
 #     agentevals \
+#     google-genai \
+#     Pillow \
+#     numpy==1.24.0 \
+#     dotenv \
 #     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
     
 RUN pip install --no-cache-dir -U \
     python-dotenv \
-    langchain==1.0.5     \
-    langchain-core==1.0.4 \
-    langchain-anthropic==1.0.3 \
-    langchain-aws==1.0.0 \
-    langchain-openai==1.0.2 \
-    langchain_ollama==1.0.0 \
-    langgraph==1.0.3 \
-    langgraph-sdk==0.2.9 \
+    langchain==1.2.10 \
+    langchain-core==1.2.16 \
+    langchain-anthropic==1.3.4 \
+    langchain-aws==1.3.0 \
+    langchain-openai==1.1.10 \
+    langchain_ollama==1.0.1 \
+    langgraph==1.0.9 \
+    langgraph-sdk==0.3.9 \
     langmem==0.0.30 \
     agentevals==0.0.9 \
-    google-genai \
-    Pillow \
+    google-genai==1.65.0 \
+    Pillow==12.1.1 \
     numpy==1.24.0 \
+    dotenv==0.9.9 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 
 COPY /colcon_ws/ /colcon_ws/
 COPY /entrypoint_scripts/ /entrypoint_scripts/
