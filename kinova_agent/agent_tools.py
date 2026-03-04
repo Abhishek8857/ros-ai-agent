@@ -11,15 +11,15 @@ COORDINATE_TOPIC = "published_coordinates"
 BOOL_TYPE = Bool    
 STOP_TOPIC = "stop_robot"
 
-SCRIPT_DIR = "/home/hiwi/workspaces/kinova_ws/kinova-ros2/docker_run"
-CONTACT_DIR = "/home/hiwi/workspaces/kinova_ws/contact-graspnet/docker_run"
+SCRIPT_DIR = "/home/ubuntu/workspaces/kinova_ws/src/kinova-ros2/docker_run"
+CONTACT_DIR = "/home/ubuntu/workspaces/kinova_ws/src/contact-graspnet/docker_run"
 
 @tool   
 def move_to_home_pose ():
     """
     Moves the Robot arm coordinates for home pose
     """
-    home_pose_coordinates = [0.0, 0.0, -0.7650, -3.15, -2.13, 0.006, -1.2, 1.55]
+    home_pose_coordinates = [0.0, 0.0, -0.55, -3.15, -2.13, 0.006, -1.2, 1.55]
     # home_pose_coordinates = [1.0, 0.28, -0.2, 0.5, 0.0, 0.0, 0.0, 1.0]
 
     publish_to(type_name=COORDINATE_TYPE, topic_name=COORDINATE_TOPIC, coordinates=home_pose_coordinates)
@@ -245,7 +245,7 @@ def pick_the_objects_in_front():
         )
 
         print("Kinova Ops Module launched in a new terminal")
-        
+
         for line in process.stdout:
             if "Received task execution status: 1" in line:
                 process.kill()
@@ -254,7 +254,7 @@ def pick_the_objects_in_front():
         
     except Exception as e:
         print("Error launching the terminator: ", e)
-        
+
         
 @tool
 def launch_the_task_constructor ():
