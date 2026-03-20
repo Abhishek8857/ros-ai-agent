@@ -1,4 +1,4 @@
 [submodule "colcon_ws/src/embodied_agent"]
 	path = colcon_ws/src/embodied_agent
 	url = https://github.com/Abhishek8857/embodied_agent.git
-	branch = main
+	branch = kairos
