@@ -28,6 +28,7 @@ docker run \
         -v $PARENT_DIR:/root/workspaces/thesis_ws/src:rw \
 		-w /ros-ai-agent \
 		-e RMW_IMPLEMENTATION \
+		-e ROS_DOMAIN_ID=30 \
 		-e DISPLAY \
 		--name agent \
         agent:latest \

@@ -31,7 +31,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
 #     dotenv \
 #     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-    
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${ROS_DISTRO}-navigation2 \
+    ros-${ROS_DISTRO}-nav2-bringup \
+    && rm -rf /var/lib/apt/lists*
+
 RUN pip install --no-cache-dir -U \
     python-dotenv \
     langchain==1.2.10 \
