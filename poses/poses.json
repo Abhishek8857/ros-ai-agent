@@ -1,0 +1,28 @@
+{
+  "home": {
+    "joints": [
+      0.049,
+      -0.4882,
+      3.1227,
+      -2.0745,
+      0.0112,
+      -0.987,
+      1.55
+    ],
+    "description": "Safe home position",
+    "saved_at": "2026-03-27T12:00:00"
+  },
+  "retract": {
+    "joints": [
+      0.0,
+      0.0,
+      3.1227,
+      -1.5,
+      0.0,
+      -1.6,
+      1.55
+    ],
+    "description": "Retract pose above workspace",
+    "saved_at": "2026-03-27T12:00:00"
+  }
+}
