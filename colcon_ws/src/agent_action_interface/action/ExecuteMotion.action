@@ -2,6 +2,10 @@
 # data[0] = 0.0 -> joint target
 # data[0] = 1.0 -> pose target
 # data[0] = 2.0 -> gripper command
+# data[0] = 3.0 -> Pick command
+# data[0] = 4.0 -> Place command
+
+
 float64[] data
 
 ---

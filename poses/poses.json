@@ -24,5 +24,31 @@
     ],
     "description": "Retract pose above workspace",
     "saved_at": "2026-03-27T12:00:00"
+  },
+  "pick_pose": {
+    "joints": [
+      0.6974,
+      0.0699,
+      -3.5728,
+      -1.3625,
+      -0.089,
+      -1.1656,
+      1.8135
+    ],
+    "description": "Pose for picking up objects",
+    "saved_at": "2026-04-09T13:48:49"
+  },
+  "place_pose": {
+    "joints": [
+      0.5438,
+      0.3356,
+      -3.6448,
+      -1.0654,
+      0.1435,
+      -1.2201,
+      1.6266
+    ],
+    "description": "Pose for placing objects",
+    "saved_at": "2026-04-09T13:57:21"
   }
 }
