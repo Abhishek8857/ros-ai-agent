@@ -1,0 +1,1581 @@
+{
+  "generated_at": "2026-04-14T20:12:22",
+  "world_state": {
+    "last_updated": "2026-04-14T20:10:10",
+    "arm_pose": "home",
+    "gripper": "open",
+    "handled_objects": [
+      "black cube",
+      "blue cube",
+      "green cube",
+      "nvidia box",
+      "red cube",
+      "two-tone cube",
+      "yellow cube"
+    ],
+    "scene_objects": [
+      "black cube",
+      "blue cube",
+      "blue grid floor",
+      "blue tiled floor",
+      "dark blue cube",
+      "green",
+      "green cube present",
+      "nvidia box",
+      "red cube",
+      "red rectangular cube",
+      "solid green cube",
+      "straight hori",
+      "yellow cube"
+    ],
+    "known_poses": {
+      "home": "Updated home pose from fresh joint readings after previous verification mismatch.",
+      "retract": "Retract pose above workspace",
+      "pick_pose": "Pose after moving forward 10 cm from home, for picking."
+    },
+    "scene": "In front of the robot there is a rectangular, light-gray perforated table or board, covered with an even grid of small holes. Near the front edge of the table (closest to the robot) two white gripper tips are just visible at the bottom of the image.\n\nOn the table, arranged roughly in a straight hori...",
+    "notes": []
+  },
+  "procedures": {
+    "home": {
+      "tool_sequence": [
+        "move_to_named_pose",
+        "get_current_joint_states"
+      ],
+      "observed_count": 43,
+      "modal_count": 26,
+      "avg_duration_s": 29.9
+    },
+    "pick_only": {
+      "tool_sequence": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "observed_count": 17,
+      "modal_count": 4,
+      "avg_duration_s": 97.1
+    },
+    "observe": {
+      "tool_sequence": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "observed_count": 9,
+      "modal_count": 6,
+      "avg_duration_s": 12.1
+    },
+    "pick_and_place": {
+      "tool_sequence": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "observed_count": 18,
+      "modal_count": 6,
+      "avg_duration_s": 151.3
+    }
+  },
+  "recent_episodes": [
+    {
+      "time": "2026-04-10T13:31:35",
+      "duration_s": 74.426,
+      "query": "pick up the red block",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS. Visual check: Yes, the red block appears extremely close to the camera, which strongly suggests that it is inside or very near the gripper. The perspective and size of the red block compared to the others indicate ...",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "grasp_assessment": "Yes, the red block appears extremely close to the camera, which strongly suggests that it is inside or very near the gripper. The perspective and size of the red block compared to the others indicate ..."
+    },
+    {
+      "time": "2026-04-10T14:06:00",
+      "duration_s": 7.179,
+      "query": "pick up the yellow cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS (for moving to home).",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-10T14:33:19",
+      "duration_s": 97.115,
+      "query": "pick up the yellow cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS (motion and grasp sequence completed). Visual check: Uncertain.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "yellow cube"
+      ],
+      "grasp_assessment": "Uncertain.\n\nJustification: The yellow cube appears very close to the camera and is partially occluded at the bottom by what may be a gripper, suggesting possible alignment and proximity. However, the ..."
+    },
+    {
+      "time": "2026-04-10T14:43:34",
+      "duration_s": 10.216,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "In the workspace, there are five visible objects:\n\n1. A red cube located on the left side.\n2. A blue cube located below the red cube.\n3. A black rectangular box with the NVIDIA logo and text in green and white, located in the center.\n4. A yellow cube located to the right of the black box.\n5. A green..."
+    },
+    {
+      "time": "2026-04-10T14:44:16",
+      "duration_s": 95.104,
+      "query": "pick up the blue cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS. Visual check: The blue cube is not visible on the workspace, and instead, a blue object is seen extremely close to the camera at the bottom center of the image. This suggests that the blue cube is likely inside the...",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube"
+      ],
+      "grasp_assessment": "The blue cube is not visible on the workspace, and instead, a blue object is seen extremely close to the camera at the bottom center of the image. This suggests that the blue cube is likely inside the..."
+    },
+    {
+      "time": "2026-04-10T15:23:14",
+      "duration_s": 86.05,
+      "query": "pick up the green cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS (grasp confirmed by visual evidence). Visual check: The green cube appears extremely close to the camera, much larger than the other cubes, and is partially out of the frame at the bottom. This suggests that it is no longer in the workspace and is like...",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "green cube"
+      ],
+      "grasp_assessment": "The green cube appears extremely close to the camera, much larger than the other cubes, and is partially out of the frame at the bottom. This suggests that it is no longer in the workspace and is like..."
+    },
+    {
+      "time": "2026-04-10T15:36:02",
+      "duration_s": 79.621,
+      "query": "grab the red block",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS — The red block appears extremely close to the camera and is no longer fully within the workspace, indicating it is likely inside the gripper.. Visual check: The red block appears extremely close to the camera and is no longer fully within the workspace area, suggesting that it is likely inside the gripper or being held by it. Its position and size relativ...",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "grasp_assessment": "The red block appears extremely close to the camera and is no longer fully within the workspace area, suggesting that it is likely inside the gripper or being held by it. Its position and size relativ..."
+    },
+    {
+      "time": "2026-04-10T15:39:20",
+      "duration_s": 92.889,
+      "query": "Can you get the yellow cube for me?",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Can you get the yellow cube for me?. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "yellow cube"
+      ],
+      "grasp_assessment": "The yellow cube is not visible on the workspace with the other cubes (red, blue, green). Instead, it appears to be extremely close to the camera, partially visible at the bottom center of the image, b..."
+    },
+    {
+      "time": "2026-04-10T15:45:45",
+      "duration_s": 84.71,
+      "query": "pick up the nvidia cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS. Visual check: Yes, the black rectangular box with the NVIDIA logo appears to be extremely close to the camera and is no longer in the workspace. This suggests that it is likely inside the gripper or being held by i...",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "nvidia box"
+      ],
+      "grasp_assessment": "Yes, the black rectangular box with the NVIDIA logo appears to be extremely close to the camera and is no longer in the workspace. This suggests that it is likely inside the gripper or being held by i..."
+    },
+    {
+      "time": "2026-04-10T15:55:28",
+      "duration_s": 117.74,
+      "query": "Pick up the red block and place it on the green block",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "red cube picked and placed on green cube. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube",
+        "green cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "red cube",
+            "placed_on": "green cube"
+          }
+        ],
+        "picked_object": "red cube",
+        "placed_on": "green cube"
+      },
+      "grasp_assessment": "Yes, the red block is placed on top of the green block."
+    },
+    {
+      "time": "2026-04-10T15:58:38",
+      "duration_s": 277.259,
+      "query": "Pick up the yellow cube and place it on the blue block",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "Multi-place (succeeded after 1 retry): yellow cube → blue cube, yellow cube → blue cube. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "yellow cube",
+        "blue cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "yellow cube",
+            "placed_on": "blue cube"
+          },
+          {
+            "picked": "yellow cube",
+            "placed_on": "blue cube"
+          }
+        ],
+        "picked_object": "yellow cube",
+        "placed_on": "blue cube",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes, the yellow cube is placed on top of the blue block."
+    },
+    {
+      "time": "2026-04-10T16:11:27",
+      "duration_s": 36.266,
+      "query": "go home go home",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Arm returned to home pose. SUCCESS (both attempts).",
+      "tools": [
+        "list_saved_poses",
+        "move_to_named_pose",
+        "get_current_joint_states"
+      ]
+    },
+    {
+      "time": "2026-04-10T16:12:13",
+      "duration_s": 152.078,
+      "query": " Pick up the blue block and place it on the red block",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "blue cube picked and placed on red cube (succeeded after 1 retry). SUCCESS.",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "red cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "blue cube",
+            "placed_on": "red cube"
+          }
+        ],
+        "picked_object": "blue cube",
+        "placed_on": "red cube",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes, the blue block is placed on top of the red block in the image."
+    },
+    {
+      "time": "2026-04-10T18:23:45",
+      "duration_s": 295.176,
+      "query": "place the yellow cube on the nvidia cube ",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "Multi-place (succeeded after 1 retry): yellow cube → nvidia box, yellow cube → nvidia box. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "nvidia box",
+        "yellow cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "yellow cube",
+            "placed_on": "nvidia box"
+          },
+          {
+            "picked": "yellow cube",
+            "placed_on": "nvidia box"
+          }
+        ],
+        "picked_object": "yellow cube",
+        "placed_on": "nvidia box",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes, the yellow cube is placed on top of the NVIDIA cube."
+    },
+    {
+      "time": "2026-04-10T18:42:44",
+      "duration_s": 101.962,
+      "query": "pick up the red block and place on the green block",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "red cube picked and placed on green cube. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube",
+        "green cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "red cube",
+            "placed_on": "green cube"
+          }
+        ],
+        "picked_object": "red cube",
+        "placed_on": "green cube"
+      },
+      "grasp_assessment": "Yes, the red block is placed on top of the green block."
+    },
+    {
+      "time": "2026-04-10T18:54:52",
+      "duration_s": 68.735,
+      "query": " Pick Up the Nvidia  cube and place on the red block",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). FAILED (No matching object found for placement).",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object"
+      ],
+      "seen_objects": [
+        "nvidia box"
+      ],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-10T18:56:49",
+      "duration_s": 2.623,
+      "query": "pick up the nvidia cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-10T19:00:35",
+      "duration_s": 112.294,
+      "query": "pick up the red cube and place on the nvidia cube ",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "red cube picked and placed on nvidia box. SUCCESS (grasp sequence completed).",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube",
+        "nvidia box"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "red cube",
+            "placed_on": "nvidia box"
+          }
+        ],
+        "picked_object": "red cube",
+        "placed_on": "nvidia box"
+      },
+      "grasp_assessment": "Yes, the red cube is placed on top of the NVIDIA cube in the image."
+    },
+    {
+      "time": "2026-04-10T19:06:42",
+      "duration_s": 70.167,
+      "query": "Pick up the red block and then go retract pose",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states"
+      ],
+      "seen_objects": [
+        "red cube"
+      ]
+    },
+    {
+      "time": "2026-04-10T19:19:57",
+      "duration_s": 88.285,
+      "query": "Pick up the yellow cube and place it on the red block then go retract pose",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object"
+      ],
+      "seen_objects": [
+        "yellow cube"
+      ],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-10T19:22:51",
+      "duration_s": 74.79,
+      "query": "Pick up the yellow cube and place it on the red block then go retract pose",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "segment_objects returned no objects matching 'red block'.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      },
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-10T19:38:31",
+      "duration_s": 2.422,
+      "query": "go home and pick up the blue cube ",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-10T19:38:49",
+      "duration_s": 95.454,
+      "query": "go home and pick up the blue cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped. SUCCESS. Visual check: Yes, the blue cube appears extremely close to the camera, much larger than the other objects in the workspace. This suggests that it is either very close to the camera or possibly inside the gripper, ...",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube"
+      ],
+      "grasp_assessment": "Yes, the blue cube appears extremely close to the camera, much larger than the other objects in the workspace. This suggests that it is either very close to the camera or possibly inside the gripper, ..."
+    },
+    {
+      "time": "2026-04-11T18:49:04",
+      "duration_s": 109.134,
+      "query": "Pick up the blue cube place it on the green cube then pick up the yellow cube and place it on the red  cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). FAILED (reason: PRE_PLACE_PLAN_FAILED, motion planning failed again).",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "green cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "Yes, the blue cube appears to be extremely close to the camera, much closer than the other objects in the workspace. Its position and size in the image suggest that it is no longer on the workspace su..."
+    },
+    {
+      "time": "2026-04-11T18:57:42",
+      "duration_s": 217.905,
+      "query": "Pick up the yellow cube place it on the blue cube then pick up the red cube and place it on the green  cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "Multi-place: yellow cube → blue cube, red cube → green cube. SUCCESS.",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "yellow cube",
+        "blue cube",
+        "red cube",
+        "green cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "yellow cube",
+            "placed_on": "blue cube"
+          },
+          {
+            "picked": "red cube",
+            "placed_on": "green cube"
+          }
+        ],
+        "picked_object": "yellow cube",
+        "placed_on": "blue cube"
+      }
+    },
+    {
+      "time": "2026-04-11T19:09:34",
+      "duration_s": 3.98,
+      "query": "pick up the smallest object",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-11T19:10:17",
+      "duration_s": 3.836,
+      "query": "pick up the smallest object",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-11T19:10:48",
+      "duration_s": 5.505,
+      "query": "pick up that blocj",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-11T19:11:07",
+      "duration_s": 3.359,
+      "query": "pick up the object",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-11T19:11:16",
+      "duration_s": 244.709,
+      "query": "Pick up the blue cube place it on the green cube then pick up the yellow cube and place it on the red  cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "Multi-place: blue cube → green cube, yellow cube → red cube. SUCCESS (joint error within tolerance).",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object",
+        "get_current_joint_states"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "green cube",
+        "yellow cube",
+        "red cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "blue cube",
+            "placed_on": "green cube"
+          },
+          {
+            "picked": "yellow cube",
+            "placed_on": "red cube"
+          }
+        ],
+        "picked_object": "blue cube",
+        "placed_on": "green cube"
+      }
+    },
+    {
+      "time": "2026-04-12T08:19:47",
+      "duration_s": 4.531,
+      "query": "lift the red cube",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Lift the red cube. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-12T08:20:24",
+      "duration_s": 152.268,
+      "query": "just lift the red cube you dont need to place it anywhere",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Just lift the red cube you dont need to place it anywhere (succeeded after 1 retry). SUCCESS — this strongly suggests the red cube is being held by the gripper rather than resting in the workspace..",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The red cube appears extremely close to the camera, at the front edge of the image, and not on the workspace like the other cubes. This suggests it is likely inside or held by the gripper rather than ..."
+    },
+    {
+      "time": "2026-04-12T11:01:01",
+      "duration_s": 172.785,
+      "query": "pick up the green block",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). FAILED to confirm a successful grasp — visual feedback shows the green block was not picked up, despite the grasp sequence reporting SUCCESS.. Visual check: The green block is still on the workspace, near the right edge of the table. It does not appear extremely close to the camera or inside the gripper.",
+      "tools": [
+        "capture_rgbd",
+        "get_current_joint_states",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "open_the_gripper"
+      ],
+      "seen_objects": [
+        "green cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The green block is still on the workspace, near the right edge of the table. It does not appear extremely close to the camera or inside the gripper."
+    },
+    {
+      "time": "2026-04-12T11:08:17",
+      "duration_s": 172.513,
+      "query": "grab the blue cube ",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS for motion and grasp execution (all arm joint errors within ~0.04 rad; gripper joints show expected closed values indicating a grasp).. Visual check: The blue cube is extremely close to the camera and no longer appears to be on the workspace surface. Its position and size strongly suggest it is inside (or directly beneath) the gripper.",
+      "tools": [
+        "capture_rgbd",
+        "get_current_joint_states",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The blue cube is extremely close to the camera and no longer appears to be on the workspace surface. Its position and size strongly suggest it is inside (or directly beneath) the gripper."
+    },
+    {
+      "time": "2026-04-12T11:18:13",
+      "duration_s": 156.179,
+      "query": "Can you pick up the red cube?",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS (within tolerance for returning to home after grasp attempt). Visual check: The red cube is extremely close to the camera, not hidden inside the gripper.",
+      "tools": [
+        "capture_rgbd",
+        "get_latest_grasp_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "open_the_gripper"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The red cube is extremely close to the camera, not hidden inside the gripper."
+    },
+    {
+      "time": "2026-04-12T11:38:44",
+      "duration_s": 205.329,
+      "query": "Please grab the yellow block",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). FAILED (as before, the measured arm joints deviate significantly from the stored home pose; home can’t be verified, but the motion command itself completed.). Visual check: The yellow block appears extremely close to the camera (partially out of frame at the bottom), not inside the gripper or removed from the workspace.",
+      "tools": [
+        "capture_rgbd",
+        "open_the_gripper",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "get_current_joint_states",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "yellow cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The yellow block appears extremely close to the camera (partially out of frame at the bottom), not inside the gripper or removed from the workspace."
+    },
+    {
+      "time": "2026-04-12T11:47:15",
+      "duration_s": 186.753,
+      "query": "Take the blue cube",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Take the blue cube (succeeded after 1 retry). SUCCESS — this is consistent with the blue cube being inside or directly under the gripper..",
+      "tools": [
+        "capture_rgbd",
+        "open_the_gripper",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The blue cube appears very large and is partially cut off at the bottom of the image, indicating it is extremely close to the camera and likely no longer on the table workspace—consistent with it bein..."
+    },
+    {
+      "time": "2026-04-12T13:51:09",
+      "duration_s": 182.406,
+      "query": "pick up the red cube ",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS — all evidence (action report + visual check) indicates the red cube is now held securely by the gripper.. Visual check: 1. The red cube is **not** visible on the table surface among the other cubes (blue, green, yellow) and the gray block.",
+      "tools": [
+        "capture_rgbd",
+        "get_current_joint_states",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "1. The red cube is **not** visible on the table surface among the other cubes (blue, green, yellow) and the gray block.\n2. A large red object is visible **very close to the camera** at the bottom cent..."
+    },
+    {
+      "time": "2026-04-12T14:45:47",
+      "duration_s": 173.895,
+      "query": "Go ahead and pick up the nvidia cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS (planner and controller reported SUCCEEDED). Visual check: The NVIDIA cube is no longer visible in the workspace in this image, which suggests it is very close to the camera—likely inside or directly under the gripper.",
+      "tools": [
+        "capture_rgbd",
+        "move_to_named_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "get_current_pose",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "nvidia box"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The NVIDIA cube is no longer visible in the workspace in this image, which suggests it is very close to the camera—likely inside or directly under the gripper."
+    },
+    {
+      "time": "2026-04-12T15:13:00",
+      "duration_s": 173.617,
+      "query": "pick up the red cube for me",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS (arm reached home; gripper partially closed around an object). Visual check: The red cube appears extremely close to the camera, much closer than the other cubes, rather than resting with them in the normal workspace. Its size and position suggest it is likely inside or very n...",
+      "tools": [
+        "capture_rgbd",
+        "get_latest_grasp_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The red cube appears extremely close to the camera, much closer than the other cubes, rather than resting with them in the normal workspace. Its size and position suggest it is likely inside or very n..."
+    },
+    {
+      "time": "2026-04-12T15:20:17",
+      "duration_s": 3.771,
+      "query": "Pick up the red cube and stack it on the blue cube",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "object picked and placed on target. ERROR.",
+      "tools": [],
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-12T15:24:31",
+      "duration_s": 173.328,
+      "query": "Pick up the blue cube and stack it on the red cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). FAILED — final_status=ABORTED, error_code=PLACE_PLAN_FAILED, error_description=\"Motion failed.\" during the \"MOVING_TO_PLACE\" stage..",
+      "tools": [
+        "capture_rgbd",
+        "get_current_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The blue cube appears extremely close to the camera, at the lower edge of the view, so it likely is no longer on the workspace surface and is instead in (or very near) the gripper."
+    },
+    {
+      "time": "2026-04-12T15:33:54",
+      "duration_s": 4.504,
+      "query": "Grab the yellow cube and place it on the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-12T15:35:01",
+      "duration_s": 146.44,
+      "query": "Grab the yellow cube and place it on the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "yellow cube picked and placed on green cube (succeeded after 1 retry). SUCCESS — the yellow cube has been picked up and placed on top of the green cube, and the arm is back at the home pose..",
+      "tools": [
+        "capture_rgbd",
+        "get_current_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "get_current_joint_states",
+        "describe_environment",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "yellow cube",
+        "green cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "yellow cube",
+            "placed_on": "green cube"
+          }
+        ],
+        "picked_object": "yellow cube",
+        "placed_on": "green cube",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes, the yellow cube is placed on top of the green cube."
+    },
+    {
+      "time": "2026-04-12T15:46:04",
+      "duration_s": 155.954,
+      "query": "Lift the blue cube and put it on top of the red cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). FAILED (second attempt also aborted during place planning; no stable placement achieved).",
+      "tools": [
+        "capture_rgbd",
+        "get_current_joint_states",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "red cube"
+      ],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-12T16:44:27",
+      "duration_s": 21.068,
+      "query": "Take the green cube and stack it onto the nvidia cube",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "need clarification of object locations before executing pick and place sequence",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      },
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-12T17:03:33",
+      "duration_s": 33.373,
+      "query": "Take the green cube and stack it onto the nvidia cube",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "Need explicit confirmation of the target placement surface (e.g., top face of the nvidia cube) before executing a place operation.",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      },
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-12T19:01:29",
+      "duration_s": 143.12,
+      "query": "Take the green cube and stack it onto the red cube",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "object picked and placed on target. ERROR.",
+      "tools": [],
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-12T19:46:54",
+      "duration_s": 244.294,
+      "query": " pick up the green cube and place on the red cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "green cube picked and placed on red cube (succeeded after 1 retry). SUCCESS – visual verification confirms the green cube is stacked on the red cube, and joint state verification is within tolerance..",
+      "tools": [
+        "capture_rgbd",
+        "list_saved_poses",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "get_current_joint_states",
+        "describe_environment",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "green cube",
+        "red cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "green cube",
+            "placed_on": "red cube"
+          }
+        ],
+        "picked_object": "green cube",
+        "placed_on": "red cube",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes. The green cube is now stacked directly on top of the red cube."
+    },
+    {
+      "time": "2026-04-13T19:20:57",
+      "duration_s": 15.225,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "Here’s a detailed description of the scene:\n\n**Background / Surface**\n- The objects rest on a rectangular, light‑gray perforated board (pegboard) with a regular grid of small holes.\n- The board is set against a blue floor or background with a white grid pattern of large squares.\n\n**Central Reference..."
+    },
+    {
+      "time": "2026-04-13T19:24:21",
+      "duration_s": 8.525,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "On the perforated gray table there are six small blocks:\n\n- Back left: a red rectangular block.\n- Back center: a two-tone cube, white on top and green on the bottom.\n- Back right: a solid green cube.\n- Front left: a dark blue cube.\n- Front center: a cyan cube with the black letter “D” on its front f..."
+    },
+    {
+      "time": "2026-04-13T19:24:49",
+      "duration_s": 280.181,
+      "query": "pick up the blue cube and place it on the two tone cube ",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "Multi-place (succeeded after 1 retry): blue cube → two-tone cube, blue cube → two-tone cube. \"Yes. The blue cube is placed directly on top of the two‑tone cube and appears centered, not beside it.\".",
+      "tools": [
+        "capture_rgbd",
+        "move_to_named_pose",
+        "segment_objects",
+        "get_current_joint_states",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "two-tone cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "blue cube",
+            "placed_on": "two-tone cube"
+          },
+          {
+            "picked": "blue cube",
+            "placed_on": "two-tone cube"
+          }
+        ],
+        "picked_object": "blue cube",
+        "placed_on": "two-tone cube",
+        "retries": 1
+      },
+      "grasp_assessment": "Yes. The blue cube is placed directly on top of the two‑tone cube and appears centered, not beside it."
+    },
+    {
+      "time": "2026-04-13T19:33:53",
+      "duration_s": 10.932,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS (scene description returned by vision model).",
+      "tools": [
+        "capture_only_rgb_image",
+        "capture_only_depth_image",
+        "describe_environment"
+      ],
+      "scene_description": "On the table there is a gray perforated board (pegboard) with a grid of small round holes.\n\nObjects on the board (all are block-shaped):\n\n- Left side: a red rectangular block (longer than it is wide, like a brick).  \n- Center‑top: a two‑tone cube, white on the top half and bright green on the lower ..."
+    },
+    {
+      "time": "2026-04-13T19:48:06",
+      "duration_s": 252.303,
+      "query": "Grab the blue cube and set it on the yellow cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "blue cube grasped (succeeded after 1 retry). FAILED — Even on this retry, despite successful grasp and place reports and refreshed perception of both cubes, the final image-based verification confirms the blue cube is still not stacked on the yellow cube.. Visual check: No. The blue cube is not stacked on top of the yellow cube; it’s separate from it on the board.",
+      "tools": [
+        "capture_rgbd",
+        "move_to_named_pose",
+        "segment_objects",
+        "get_current_joint_states",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "get_place_pose",
+        "place_object",
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "seen_objects": [
+        "blue cube",
+        "yellow cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "blue cube",
+            "placed_on": "yellow cube"
+          },
+          {
+            "picked": "yellow cube",
+            "placed_on": "yellow cube"
+          }
+        ],
+        "picked_object": "blue cube",
+        "placed_on": "yellow cube",
+        "retries": 1
+      },
+      "grasp_assessment": "No. The blue cube is not stacked on top of the yellow cube; it’s separate from it on the board."
+    },
+    {
+      "time": "2026-04-14T18:55:56",
+      "duration_s": 14.069,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "capture_only_depth_image",
+        "describe_environment"
+      ],
+      "scene_description": "In front of the robot there is a rectangular, perforated gray table or board, with a grid of small evenly spaced holes across its surface. On the near edge of the table the robot’s two white gripper fingers are visible at the bottom center of the image.\n\nOn top of the table, arranged in a horizontal..."
+    },
+    {
+      "time": "2026-04-14T18:56:19",
+      "duration_s": 129.034,
+      "query": "Pick up the green cube and position it on the red cube",
+      "task_type": "pick_only",
+      "outcome": "success",
+      "outcome_fact": "green cube grasped. SUCCESS (green cube is now stacked on the red cube, and the arm is back at the home pose.). Visual check: Yes, the green cube is placed on top of the red cube.",
+      "tools": [
+        "capture_rgbd",
+        "move_to_named_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "green cube",
+        "red cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "green cube",
+            "placed_on": "red cube"
+          }
+        ],
+        "picked_object": "green cube",
+        "placed_on": "red cube"
+      },
+      "grasp_assessment": "Yes, the green cube is placed on top of the red cube."
+    },
+    {
+      "time": "2026-04-14T19:38:28",
+      "duration_s": 10.144,
+      "query": "Move the yellow cube onto the blue cube",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Move the yellow cube onto the blue cube. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-14T19:38:44",
+      "duration_s": 248.63,
+      "query": "yws",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Yws (succeeded after 1 retry). SUCCEEDED (joint motion completed). As noted previously, the stored home joint vector cannot be cleanly compared to the reported joint state because of ordering/extra gripper joints, so numerical joint verification is inconclusive..",
+      "tools": [
+        "capture_rgbd",
+        "move_to_named_pose",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "get_place_pose",
+        "place_object"
+      ],
+      "seen_objects": [
+        "yellow cube",
+        "blue cube"
+      ],
+      "key_args": {
+        "placements": [
+          {
+            "picked": "yellow cube",
+            "placed_on": "blue cube"
+          }
+        ],
+        "picked_object": "yellow cube",
+        "placed_on": "blue cube",
+        "retries": 1
+      },
+      "grasp_assessment": "The yellow cube appears extremely close to the camera and no longer on the workspace surface, which suggests it is inside or being held by the gripper."
+    },
+    {
+      "time": "2026-04-14T19:46:51",
+      "duration_s": 33.685,
+      "query": "Lift the black cube and place it on top of the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). SUCCESS (within joint tolerance for the arm; gripper joints are also reported and are within normal range).",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states"
+      ],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-04-14T19:54:54",
+      "duration_s": 13.824,
+      "query": "what do you see ",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "In front of me there is a perforated gray board lying on a blue grid floor.  \nOn the board, near the bottom edge, are five small colored cubes arranged in a horizontal row from left to right:\n\n1. Yellow cube  \n2. Green cube  \n3. Black (or dark gray) cube  \n4. Blue cube  \n5. Red cube  \n\nThe viewpoint..."
+    },
+    {
+      "time": "2026-04-14T19:57:13",
+      "duration_s": 194.993,
+      "query": "Lift the black cube and place it on top of the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target (succeeded after 1 retry). Motion SUCCEEDED..",
+      "tools": [
+        "capture_rgbd",
+        "open_the_gripper",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose",
+        "pick_up_object",
+        "move_to_named_pose",
+        "capture_only_rgb_image",
+        "describe_environment",
+        "get_current_joint_states"
+      ],
+      "seen_objects": [
+        "black cube"
+      ],
+      "key_args": {
+        "retries": 1
+      },
+      "grasp_assessment": "The black cube is no longer visible in the workspace in this image, so it’s consistent with it having been picked up and being inside the gripper rather than very close to the camera."
+    },
+    {
+      "time": "2026-04-14T20:02:19",
+      "duration_s": 6.687,
+      "query": "Lift the black cube and place it on top of the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "success",
+      "outcome_fact": "object picked and placed on target. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-14T20:02:38",
+      "duration_s": 12.103,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "capture_only_depth_image",
+        "describe_environment"
+      ],
+      "scene_description": "The scene shows a perforated gray board on a blue tiled floor. On the board there are five colored cubes arranged in a row.\n\nMain objects:\n- Gray perforated board  \n- Yellow cube  \n- Green cube  \n- Black cube  \n- Blue cube  \n- Red cube  \n\nYes, there is both a black cube and a green cube present."
+    },
+    {
+      "time": "2026-04-14T20:04:07",
+      "duration_s": 13.342,
+      "query": "what do you see ",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "In front of the robot there is a perforated gray work surface (pegboard-style).  \nOn this surface, near the front edge, there is a row of five small cubes spaced apart from left to right:\n\n1. Yellow cube (far left)  \n2. Green cube  \n3. Dark gray/black cube (center)  \n4. Blue cube  \n5. Red cube (far ..."
+    },
+    {
+      "time": "2026-04-14T20:04:22",
+      "duration_s": 244.415,
+      "query": "Lift the black cube and place it on top of the green cube",
+      "task_type": "pick_and_place",
+      "outcome": "error",
+      "outcome_fact": "pick verification failed (visual check shows black cube still on workspace) and place_object aborted with error_code PLACE_PLAN_FAILED while moving to place above green cube",
+      "tools": [],
+      "key_args": {
+        "retries": 1
+      },
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-14T20:10:10",
+      "duration_s": 11.042,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "describe_environment"
+      ],
+      "scene_description": "In front of the robot there is a rectangular, light-gray perforated table or board, covered with an even grid of small holes. Near the front edge of the table (closest to the robot) two white gripper tips are just visible at the bottom of the image.\n\nOn the table, arranged roughly in a straight hori..."
+    }
+  ],
+  "stats": {
+    "total_episodes": 109,
+    "meaningful_episodes": 66,
+    "trivial_episodes_pruned": 43,
+    "successful": 103,
+    "errors": 6,
+    "average_duration_s": 73.46,
+    "task_frequency": {
+      "home": 43,
+      "pick_only": 24,
+      "observe": 9,
+      "other": 7,
+      "pick_and_place": 26
+    },
+    "tool_frequency": {
+      "move_to_named_pose": 82,
+      "get_current_joint_states": 68,
+      "capture_only_rgb_image": 41,
+      "describe_environment": 41,
+      "capture_rgbd": 38,
+      "segment_objects": 38,
+      "save_segmentation_for_graspnet": 38,
+      "get_latest_grasp_pose": 38,
+      "pick_up_object": 38,
+      "list_saved_poses": 18,
+      "get_place_pose": 17,
+      "place_object": 17,
+      "open_the_gripper": 5,
+      "get_current_pose": 3,
+      "capture_only_depth_image": 3,
+      "save_current_pose": 1
+    }
+  }
+}
