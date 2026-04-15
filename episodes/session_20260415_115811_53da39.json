@@ -1,0 +1,47 @@
+{
+  "session_id": "session_20260415_115811_53da39",
+  "created_at": 1776254304.484988,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260415_115811_53da39",
+      "timestamp_start": "2026-04-15T11:58:19.089628",
+      "timestamp_end": "2026-04-15T11:58:24.485528",
+      "duration_s": 5.396,
+      "query": "what can you do",
+      "tool_calls": [],
+      "final_response": "{\"response\":\"I control a wheeled indoor robot and can manage its navigation for you. In practical terms, I can:\\n\\n1) Go to places\\n- Go to a named location: e.g., “go to table A”, “go to the kitchen”, “return to home”.\\n- Go to exact coordinates: e.g., “go to x=3.2, y=1.5, facing 90 degrees”.\\n\\n2) Move relative to where I am\\n- Move forward/backward: e.g., “move forward 2 meters”, “back up 50 centimeters”.\\n- Move sideways: e.g., “shift left 1 meter”, “move right 30 cm”.\\n- Rotate in place: e.g., “turn left 45 degrees”, “turn right 90 degrees”.\\n\\n3) Manage saved locations\\n- List known places: “what locations do you know?”, “where can you go?”.\\n- Save the current spot: “save this as table G”, “remember this as charging dock”.\\n- Delete a saved spot (with confirmation): “forget table G”, “delete charging dock”.\\n\\n4) Monitor and control navigation\\n- Stop immediately: “stop”, “cancel navigation”, “halt”.\\n- Always verify where the robot ended up after a move.\\n\\nIf you tell me what you want the robot to do right now (for example: “go to home” or “move forward 1 meter and turn right 90 degrees”), I’ll execute it step by step and report back the final pose each time.\",\"answer\":null,\"tools\":null,\"task_type\":\"query\",\"outcome\":\"success\",\"failure_reason\":null}",
+      "outcome": "success",
+      "error": null
+    },
+    {
+      "episode_id": "ep_0002",
+      "session_id": "session_20260415_115811_53da39",
+      "timestamp_start": "2026-04-15T11:58:31.185892",
+      "timestamp_end": "2026-04-15T11:59:40.596084",
+      "duration_s": 69.41,
+      "query": "go to home pose",
+      "tool_calls": [
+        {
+          "step": 1,
+          "tool": "navigate_to_location",
+          "args": {
+            "location_name": "home"
+          },
+          "output": "{\"success\": true, \"status\": \"succeeded\", \"message\": \"Reached x=-0.00, y=-0.00, yaw=0.2°\"}",
+          "tool_call_id": "call_SecPZwruD2jcnVkj9EBNI8oN"
+        },
+        {
+          "step": 2,
+          "tool": "get_current_pose",
+          "args": {},
+          "output": "{\"success\": true, \"x\": -0.0062, \"y\": -0.031, \"yaw_degrees\": 1.32}",
+          "tool_call_id": "call_jxfwudWWQ4yvfqTagkIVsJs8"
+        }
+      ],
+      "final_response": "{\"response\":\"The robot was commanded to go to the home pose.\\n\\nVerification:\\n- Before:  (x, y, yaw) = (unknown — not requested before move)\\n- Target:  home (as defined in the map)\\n- Final:   (x, y, yaw) = (-0.01 m, -0.03 m, 1.3°)\\n- Result:  SUCCESS (within navigation tolerances)\",\"answer\":null,\"tools\":[{\"name\":\"functions.navigate_to_location\",\"args\":{\"location_name\":\"home\"},\"result\":{\"success\":true,\"status\":\"succeeded\",\"message\":\"Reached x=-0.00, y=-0.00, yaw=0.2°\"}},{\"name\":\"functions.get_current_pose\",\"args\":{},\"result\":{\"success\":true,\"x\":-0.0062,\"y\":-0.031,\"yaw_degrees\":1.32}}],\"task_type\":\"action\",\"outcome\":\"success\",\"failure_reason\":null}",
+      "outcome": "success",
+      "error": null
+    }
+  ]
+}

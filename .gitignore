@@ -6,7 +6,7 @@
 log/COLCON_IGNORE
 
 **/**.code-workspace
-**/**episodes/
-**/**memory/
+# **/**episodes/
+# **/**memory/
 **/**captures/
 **/**predictions/*.npz

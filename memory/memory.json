@@ -1,0 +1,750 @@
+{
+  "generated_at": "2026-04-15T13:50:48",
+  "world_state": {
+    "last_updated": "2026-04-15T13:48:35",
+    "current_pose": {
+      "x": 1.663,
+      "y": -3.1418,
+      "yaw_degrees": -0.77
+    },
+    "last_location": "Table D",
+    "known_locations": [
+      "Table A",
+      "Table B",
+      "Table C",
+      "Table D",
+      "Table E",
+      "Table F",
+      "home",
+      "kitchen",
+      "table Z"
+    ],
+    "notes": []
+  },
+  "procedures": {
+    "other": {
+      "tool_sequence": [],
+      "observed_count": 17,
+      "modal_count": 9,
+      "avg_duration_s": 23.8
+    },
+    "home": {
+      "tool_sequence": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "observed_count": 4,
+      "modal_count": 4,
+      "avg_duration_s": 44.3
+    },
+    "navigate": {
+      "tool_sequence": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "observed_count": 15,
+      "modal_count": 13,
+      "avg_duration_s": 39.7
+    },
+    "query_pose": {
+      "tool_sequence": [
+        "get_current_pose"
+      ],
+      "observed_count": 1,
+      "modal_count": 1,
+      "avg_duration_s": 4.1
+    },
+    "relative_move": {
+      "tool_sequence": [],
+      "observed_count": 5,
+      "modal_count": 2,
+      "avg_duration_s": 11.1
+    },
+    "rotate": {
+      "tool_sequence": [
+        "turn_left",
+        "get_current_pose"
+      ],
+      "observed_count": 3,
+      "modal_count": 1,
+      "avg_duration_s": 22.4
+    },
+    "save_location": {
+      "tool_sequence": [
+        "save_location"
+      ],
+      "observed_count": 3,
+      "modal_count": 2,
+      "avg_duration_s": 4.4
+    },
+    "delete_location": {
+      "tool_sequence": [],
+      "observed_count": 2,
+      "modal_count": 2,
+      "avg_duration_s": 1.6
+    }
+  },
+  "recent_episodes": [
+    {
+      "time": "2026-04-15T11:58:31",
+      "duration_s": 69.41,
+      "query": "go to home pose",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS (within navigation tolerances).",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-15T12:03:08",
+      "duration_s": 31.505,
+      "query": "Navigate to Table A",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table A. SUCCESS  [position error: 0.01 m, yaw error: 3.6°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table A"
+      }
+    },
+    {
+      "time": "2026-04-15T12:05:29",
+      "duration_s": 28.157,
+      "query": "Take me to Table B",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table B. SUCCESS  [position error: 0.02 m, yaw error: 5.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table B"
+      }
+    },
+    {
+      "time": "2026-04-15T12:05:58",
+      "duration_s": 30.773,
+      "query": "Move to table C",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table C. SUCCESS  [position error: 0.03 m, yaw error: 0.9°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table C"
+      }
+    },
+    {
+      "time": "2026-04-15T12:06:32",
+      "duration_s": 31.839,
+      "query": "Go to table D",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table D. SUCCESS  [position error: 0.02 m, yaw error: 0.7°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table D"
+      }
+    },
+    {
+      "time": "2026-04-15T12:08:09",
+      "duration_s": 46.049,
+      "query": "Navigate to table E",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table E. SUCCESS  [position error: 0.02 m, yaw error: 1.9°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table E"
+      }
+    },
+    {
+      "time": "2026-04-15T12:08:58",
+      "duration_s": 37.229,
+      "query": "Take me to Table F ",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table F. SUCCESS  [position error: 0.03 m, yaw error: 2.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table F"
+      }
+    },
+    {
+      "time": "2026-04-15T12:09:46",
+      "duration_s": 45.687,
+      "query": "Go back to home ",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS  [position error: 0.07 m, yaw error: 4.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-15T12:24:37",
+      "duration_s": 3.791,
+      "query": "where are you right now",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Where are you right now. SUCCESS.",
+      "tools": [
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:24:58",
+      "duration_s": 4.059,
+      "query": "tell me your current position",
+      "task_type": "query_pose",
+      "outcome": "success",
+      "outcome_fact": "Tell me your current position. SUCCESS.",
+      "tools": [
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:25:21",
+      "duration_s": 32.021,
+      "query": "Go to Table A and tell me your pose",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table A. SUCCESS.",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table A"
+      }
+    },
+    {
+      "time": "2026-04-15T12:26:09",
+      "duration_s": 28.997,
+      "query": "Move to table B and confirm when you reach",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table B. SUCCESS.",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table B"
+      }
+    },
+    {
+      "time": "2026-04-15T12:27:12",
+      "duration_s": 13.04,
+      "query": "move forward 1 meter",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS  [within 0.15 m position and 10° yaw tolerance].",
+      "tools": [
+        "move_forward",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:27:34",
+      "duration_s": 10.172,
+      "query": "move backward 0.5 meters",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS  [within 0.15 m position and 10° yaw tolerance].",
+      "tools": [
+        "move_backward",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:27:48",
+      "duration_s": 30.744,
+      "query": "go home ",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS.",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-15T12:28:19",
+      "duration_s": 15.349,
+      "query": "move left 1 meter",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Move left 1 meter. SUCCESS.",
+      "tools": [
+        "move_left",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:28:35",
+      "duration_s": 36.471,
+      "query": "move right 1 meter",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Move right 1 meter. SUCCESS.",
+      "tools": [
+        "move_right",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:29:30",
+      "duration_s": 16.462,
+      "query": "turn left 90 degrees",
+      "task_type": "rotate",
+      "outcome": "success",
+      "outcome_fact": "Rotate. SUCCESS.",
+      "tools": [
+        "turn_left",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:29:47",
+      "duration_s": 11.339,
+      "query": "turn right 45",
+      "task_type": "rotate",
+      "outcome": "success",
+      "outcome_fact": "Rotate. SUCCESS.",
+      "tools": [
+        "turn_right",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T12:30:27",
+      "duration_s": 36.475,
+      "query": "go to table b",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table B. SUCCESS.",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table B"
+      }
+    },
+    {
+      "time": "2026-04-15T12:30:48",
+      "duration_s": 0.964,
+      "query": "move forward 2 meters and turn left 90 degrees",
+      "task_type": "relative_move",
+      "outcome": "error",
+      "outcome_fact": "Relative move. ERROR.",
+      "tools": [],
+      "error": "Error code: 400 - {'error': {'message': 'Provider returned error', 'code': 400, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"message\": \"No tool output found for function call call_xNaGCEAALsWdoRCJoxnoEF8l.\",\\n    \"type\": \"invalid_request_error\",\\n    \"param\": \"input\",\\n    \"code\": null\\n  }\\n}', 'provider_name': 'Azure', 'is_byok': False}}, 'user_id': 'user_30MPEW3pgtkBhom3hMttKMduZwp'}"
+    },
+    {
+      "time": "2026-04-15T12:31:06",
+      "duration_s": 22.098,
+      "query": "move forward 2 meters and turn left 90 degrees",
+      "task_type": "relative_move",
+      "outcome": "error",
+      "outcome_fact": "Relative move. ERROR.",
+      "tools": [],
+      "error": "'Episode' object has no attribute 'record_retry'"
+    },
+    {
+      "time": "2026-04-15T13:05:20",
+      "duration_s": 31.244,
+      "query": "go home #",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS  [position error: 0.04 m, yaw error: 2.4°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-15T13:06:05",
+      "duration_s": 39.413,
+      "query": "move left 2 meters and then turn left 90 degrees",
+      "task_type": "rotate",
+      "outcome": "success",
+      "outcome_fact": "Rotate. SUCCESS  [position error: ≈0.03 m, yaw error: ≈2.5°].",
+      "tools": [
+        "move_left",
+        "get_current_pose",
+        "turn_left"
+      ]
+    },
+    {
+      "time": "2026-04-15T13:06:44",
+      "duration_s": 5.275,
+      "query": "save this location as inspection point",
+      "task_type": "save_location",
+      "outcome": "success",
+      "outcome_fact": "Saved location 'inspection point'. SUCCESS.",
+      "tools": [
+        "save_location"
+      ],
+      "key_args": {
+        "location_name": "inspection point"
+      }
+    },
+    {
+      "time": "2026-04-15T13:07:12",
+      "duration_s": 26.408,
+      "query": "move forward 0.5 meters and then right 0.5 meters",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. PARTIAL/UNVERIFIED (right move succeeded per tool, but exact pre/post pose pair wasn’t captured; subsequent pose is consistent with a ~0.5 m rightward shift)..",
+      "tools": [
+        "move_forward",
+        "move_right",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-15T13:11:03",
+      "duration_s": 3.987,
+      "query": "save this location as charging dock",
+      "task_type": "save_location",
+      "outcome": "success",
+      "outcome_fact": "Saved location 'charging dock'. SUCCESS.",
+      "tools": [
+        "save_location"
+      ],
+      "key_args": {
+        "location_name": "charging dock"
+      }
+    },
+    {
+      "time": "2026-04-15T13:11:12",
+      "duration_s": 1.88,
+      "query": "list all locations ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "List all locations. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:11:36",
+      "duration_s": 1.699,
+      "query": "delete location inspection point",
+      "task_type": "delete_location",
+      "outcome": "success",
+      "outcome_fact": "Deleted location ''. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:11:47",
+      "duration_s": 2.989,
+      "query": "yes",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Yes. SUCCESS.",
+      "tools": [
+        "delete_location"
+      ],
+      "key_args": {
+        "location_name": "inspection point"
+      }
+    },
+    {
+      "time": "2026-04-15T13:11:59",
+      "duration_s": 1.855,
+      "query": "remove charging dock",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Remove charging dock. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:12:04",
+      "duration_s": 3.846,
+      "query": "yes",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Yes. SUCCESS.",
+      "tools": [
+        "delete_location"
+      ],
+      "key_args": {
+        "location_name": "charging dock"
+      }
+    },
+    {
+      "time": "2026-04-15T13:12:56",
+      "duration_s": 4.155,
+      "query": "go to table Z",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table Z. SUCCESS.",
+      "tools": [
+        "navigate_to_location"
+      ],
+      "key_args": {
+        "location_name": "table Z"
+      }
+    },
+    {
+      "time": "2026-04-15T13:13:20",
+      "duration_s": 1.593,
+      "query": "delete location unknown_place",
+      "task_type": "delete_location",
+      "outcome": "success",
+      "outcome_fact": "Deleted location ''. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:13:29",
+      "duration_s": 3.949,
+      "query": "yes",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Yes. SUCCESS.",
+      "tools": [
+        "delete_location"
+      ],
+      "key_args": {
+        "location_name": "unknown_place"
+      }
+    },
+    {
+      "time": "2026-04-15T13:13:45",
+      "duration_s": 3.935,
+      "query": "navigate to kitchen",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to kitchen. SUCCESS.",
+      "tools": [
+        "navigate_to_location"
+      ],
+      "key_args": {
+        "location_name": "kitchen"
+      }
+    },
+    {
+      "time": "2026-04-15T13:14:03",
+      "duration_s": 3.529,
+      "query": "move forward minus 1 meter",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:14:24",
+      "duration_s": 2.254,
+      "query": "yes move backward ",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:14:48",
+      "duration_s": 2.983,
+      "query": "table D is my favorite table ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Table d is my favorite table. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:15:05",
+      "duration_s": 2.166,
+      "query": "i like table B more than Table A",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "I like table b more than table a. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:15:21",
+      "duration_s": 2.588,
+      "query": "Home is my safe zone ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Home is my safe zone. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:33:33",
+      "duration_s": 67.832,
+      "query": "Take me to my favorite table",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table D. SUCCESS  [position error: 0.03 m, yaw error: 1.1°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table D"
+      }
+    },
+    {
+      "time": "2026-04-15T13:37:40",
+      "duration_s": 67.479,
+      "query": "go to my safe zone ",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to home. SUCCESS  [position error: 0.05 m, yaw error: 3.6°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-15T13:39:00",
+      "duration_s": 68.006,
+      "query": "take me to my tables according to the order i like them",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table D. SUCCESS  [position error: 0.04 m, yaw error: 3.2°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table D"
+      }
+    },
+    {
+      "time": "2026-04-15T13:40:23",
+      "duration_s": 80.041,
+      "query": "yes ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Yes. SUCCESS  [position error: 0.04 m, yaw error: 3.2°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table A"
+      }
+    },
+    {
+      "time": "2026-04-15T13:41:44",
+      "duration_s": 80.438,
+      "query": "navigate to the table i like the most",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table D. SUCCESS  [position error: 0.02 m, yaw error: 1.1°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table D"
+      }
+    },
+    {
+      "time": "2026-04-15T13:43:08",
+      "duration_s": 2.347,
+      "query": "Going from home to table D to table A is my favorite routine",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Going from home to table d to table a is my favorite routine. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:43:36",
+      "duration_s": 3.974,
+      "query": "save this critical routine home to table B to table C",
+      "task_type": "save_location",
+      "outcome": "success",
+      "outcome_fact": "Saved location ''. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-15T13:44:22",
+      "duration_s": 232.613,
+      "query": "perform my favorite routine ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Perform my favorite routine. SUCCESS  [position error ≈ 0.04 m, yaw error ≈ 1.0°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table A"
+      }
+    },
+    {
+      "time": "2026-04-15T13:48:35",
+      "duration_s": 4.503,
+      "query": "execute the critical routine ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Execute the critical routine. SUCCESS.",
+      "tools": []
+    }
+  ],
+  "stats": {
+    "total_episodes": 52,
+    "meaningful_episodes": 50,
+    "trivial_episodes_pruned": 2,
+    "successful": 50,
+    "errors": 2,
+    "average_duration_s": 25.82,
+    "task_frequency": {
+      "other": 17,
+      "home": 4,
+      "navigate": 15,
+      "query_pose": 1,
+      "relative_move": 7,
+      "rotate": 3,
+      "save_location": 3,
+      "delete_location": 2
+    },
+    "tool_frequency": {
+      "get_current_pose": 29,
+      "navigate_to_location": 21,
+      "delete_location": 3,
+      "move_forward": 2,
+      "move_left": 2,
+      "move_right": 2,
+      "turn_left": 2,
+      "save_location": 2,
+      "move_backward": 1,
+      "turn_right": 1
+    }
+  }
+}
