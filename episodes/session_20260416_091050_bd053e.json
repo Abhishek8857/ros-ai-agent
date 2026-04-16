@@ -1,0 +1,69 @@
+{
+  "session_id": "session_20260416_091050_bd053e",
+  "created_at": 1776330650.7976224,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260416_091050_bd053e",
+      "timestamp_start": "2026-04-16T09:10:56.968646",
+      "timestamp_end": "2026-04-16T09:12:14.391900",
+      "duration_s": 77.423,
+      "query": "go home",
+      "retries": {
+        "count": 1,
+        "attempts": [
+          {
+            "attempt": 1,
+            "failure_reason": "verification failed: named-pose move_to_named_pose('home') joint errors exceed tolerance; final joints differ significantly from commanded home pose",
+            "hint_used": null
+          }
+        ]
+      },
+      "ai_messages": [
+        "The robot was commanded to move to the 'home' pose.\n\nVerification:\n- Target joints (arm, excluding flag/index 0): [-0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482]\n- Final joints  (arm, from sensors):       [-0.4877, -3.1619, -2.0753, 0.0157, -0.9898, 1.5473]\n- Result: FAILED — multiple joint errors exceed 0.05 rad tolerance (notably joint_3 and joint_4), and joint_2 sign/values differ significantly, so the final state does not match the commanded home pose.\n\ntask_type: action\noutcome: failed\nfailure_reason: \"verification failed: named-pose move_to_named_pose('home') joint errors exceed tolerance; final joints differ significantly from commanded home pose\"",
+        "The robot was commanded to move to the 'home' pose.\n\nVerification:\n- Target joints (arm, excluding flag/index 0): [-0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482]\n- Final joints  (arm, from sensors):       [-0.4876, -3.1621, -2.0755, 0.0159, -0.9898, 1.5474]\n- Result: FAILED — several joints differ significantly from the commanded home pose (notably joint_2 sign/values and joint_3/4 magnitudes), so the robot did not reliably reach the stored home configuration on this second attempt.\n\nSince this was the automatic retry (Attempt 2/2) and verification still failed, I will not issue further home motions without your instructions. Please advise whether to:\n- re-teach/save the current configuration as a new home pose, or\n- move to a different named pose (if available), or\n- stop and investigate the controller/pose registry offline.\n\ntask_type: action\noutcome: failed\nfailure_reason: \"verification failed on retry: named-pose move_to_named_pose('home') joint errors exceed tolerance; final joints differ significantly from commanded home pose\""
+      ],
+      "tool_calls": [
+        {
+          "step": 1,
+          "tool": "move_to_named_pose",
+          "args": {
+            "name": "home"
+          },
+          "output": "{\"success\": true, \"goal_accepted\": true, \"final_status\": \"SUCCEEDED\", \"error_code\": \"SUCCESS\", \"error_description\": \"Joint motion completed.\", \"feedback\": [{\"t\": 1776330659.4756815, \"state\": \"RECEIVED\", \"progress\": 0.25}, {\"t\": 1776330659.4763248, \"state\": \"PLANNING\", \"progress\": 0.5}, {\"t\": 1776330659.5121431, \"state\": \"EXECUTING\", \"progress\": 0.75}, {\"t\": 1776330674.46483, \"state\": \"DONE\", \"progress\": 1.0}], \"sent_data\": [0.0, 0.0492, -0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482], \"elapsed_s\": 14.991492250000192}",
+          "tool_call_id": "call_QnE3F0SNAERSikOmMt2HK04V"
+        },
+        {
+          "step": 2,
+          "tool": "get_current_joint_states",
+          "args": {
+            "max_age_s": 1.0
+          },
+          "output": "{\"success\": true, \"age_s\": 0.0379178524017334, \"name\": [\"joint_1\", \"joint_2\", \"joint_3\", \"joint_4\", \"joint_5\", \"joint_6\", \"joint_7\", \"robotiq_85_left_knuckle_joint\", \"robotiq_85_right_knuckle_joint\", \"robotiq_85_left_finger_tip_joint\", \"robotiq_85_right_finger_joint\", \"robotiq_85_left_finger_tip_joint\", \"robotiq_85_right_inner_knuckle_joint\", \"robotiq_85_left_inner_knuckle_joint\", \"robotiq_85_right_inner_knuckle_joint\"], \"position\": [0.0491, -0.4877, -3.1619, -2.0753, 0.0157, -0.9898, 1.5473, 0.0017, 0.0039, -0.0042, -0.0043, -0.0287, 0.0309, -0.0277, -0.0298], \"velocity\": [0.0017, -0.0035, 0.003, 0.008, -0.0057, -0.001, 0.0043, 0.1487, 0.1487, 0.0676, -0.0669, 0.018, 0.3147, 0.008, -0.3042], \"effort\": [0.0146, 1.09, 0.3025, 6.4491, 0.0329, 1.0975, -0.0005, -0.1571, -0.1568, 0.1856, 0.1853, 0.0055, -0.0054, -0.004, -0.0041]}",
+          "tool_call_id": "call_m5TTEjE5comFzeymYztEAEtN"
+        },
+        {
+          "step": 3,
+          "tool": "move_to_named_pose",
+          "args": {
+            "name": "home"
+          },
+          "output": "{\"success\": true, \"goal_accepted\": true, \"final_status\": \"SUCCEEDED\", \"error_code\": \"SUCCESS\", \"error_description\": \"Joint motion completed.\", \"feedback\": [{\"t\": 1776330715.1201816, \"state\": \"RECEIVED\", \"progress\": 0.25}, {\"t\": 1776330715.1212103, \"state\": \"PLANNING\", \"progress\": 0.5}, {\"t\": 1776330715.1308162, \"state\": \"EXECUTING\", \"progress\": 0.75}, {\"t\": 1776330715.1995218, \"state\": \"DONE\", \"progress\": 1.0}], \"sent_data\": [0.0, 0.0492, -0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482], \"elapsed_s\": 0.08501274200079934}",
+          "tool_call_id": "call_zer4TFIO8c382Kt2jlIQvOTo"
+        },
+        {
+          "step": 4,
+          "tool": "get_current_joint_states",
+          "args": {
+            "max_age_s": 1.0
+          },
+          "output": "{\"success\": true, \"age_s\": 0.034255266189575195, \"name\": [\"joint_1\", \"joint_2\", \"joint_3\", \"joint_4\", \"joint_5\", \"joint_6\", \"joint_7\", \"robotiq_85_left_knuckle_joint\", \"robotiq_85_right_knuckle_joint\", \"robotiq_85_left_finger_tip_joint\", \"robotiq_85_right_finger_joint\", \"robotiq_85_left_finger_tip_joint\", \"robotiq_85_right_inner_knuckle_joint\", \"robotiq_85_left_inner_knuckle_joint\", \"robotiq_85_right_inner_knuckle_joint\"], \"position\": [0.0492, -0.4876, -3.1621, -2.0755, 0.0159, -0.9898, 1.5474, 0.0017, 0.0039, -0.0042, -0.0043, -0.0287, 0.0309, -0.0277, -0.0298], \"velocity\": [0.0006, -0.0035, 0.0041, 0.009, -0.0063, -0.0011, 0.0035, 0.1487, 0.1487, 0.0675, -0.0669, 0.0178, 0.3146, 0.0079, -0.304], \"effort\": [0.0152, 1.091, 0.3026, 6.445, 0.0334, 1.0963, -0.0005, -0.157, -0.1568, 0.1856, 0.1854, 0.0055, -0.0053, -0.004, -0.0041]}",
+          "tool_call_id": "call_JtdnSTMTm36eqvP7aMEgzsHd"
+        }
+      ],
+      "final_response": "The robot was commanded to move to the 'home' pose.\n\nVerification:\n- Target joints (arm, excluding flag/index 0): [-0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482]\n- Final joints  (arm, from sensors):       [-0.4876, -3.1621, -2.0755, 0.0159, -0.9898, 1.5474]\n- Result: FAILED — several joints differ significantly from the commanded home pose (notably joint_2 sign/values and joint_3/4 magnitudes), so the robot did not reliably reach the stored home configuration on this second attempt.\n\nSince this was the automatic retry (Attempt 2/2) and verification still failed, I will not issue further home motions without your instructions. Please advise whether to:\n- re-teach/save the current configuration as a new home pose, or\n- move to a different named pose (if available), or\n- stop and investigate the controller/pose registry offline.\n\ntask_type: action\noutcome: failed\nfailure_reason: \"verification failed on retry: named-pose move_to_named_pose('home') joint errors exceed tolerance; final joints differ significantly from commanded home pose\"",
+      "outcome": "success",
+      "error": null
+    }
+  ]
+}

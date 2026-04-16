@@ -1,0 +1,66 @@
+{
+  "session_id": "session_20260416_143433_881c9c",
+  "created_at": 1776350099.6958492,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260416_143433_881c9c",
+      "timestamp_start": "2026-04-16T14:34:49.029920",
+      "timestamp_end": "2026-04-16T14:34:51.022954",
+      "duration_s": 1.993,
+      "query": "what is my favorite routine",
+      "retries": {
+        "count": 0,
+        "attempts": []
+      },
+      "ai_messages": [
+        "Your favorite routine is having the black cube picked up and placed on top of the yellow cube."
+      ],
+      "tool_calls": [],
+      "final_response": "Your favorite routine is having the black cube picked up and placed on top of the yellow cube.",
+      "outcome": "success",
+      "error": null
+    },
+    {
+      "episode_id": "ep_0002",
+      "session_id": "session_20260416_143433_881c9c",
+      "timestamp_start": "2026-04-16T14:34:58.030836",
+      "timestamp_end": "2026-04-16T14:34:59.696525",
+      "duration_s": 1.666,
+      "query": "what is the critical routine",
+      "retries": {
+        "count": 0,
+        "attempts": []
+      },
+      "ai_messages": [
+        "Your favorite routine is having the black cube picked up and placed on top of the yellow cube.",
+        "The critical routine is placing the red cube on top of the yellow cube."
+      ],
+      "tool_calls": [],
+      "final_response": "The critical routine is placing the red cube on top of the yellow cube.",
+      "outcome": "success",
+      "error": null
+    },
+    {
+      "episode_id": "ep_0003",
+      "session_id": "session_20260416_143433_881c9c",
+      "timestamp_start": "2026-04-16T14:35:05.919352",
+      "timestamp_end": "2026-04-16T14:35:07.890860",
+      "duration_s": 1.971,
+      "query": "favorite routine",
+      "retries": {
+        "count": 0,
+        "attempts": []
+      },
+      "ai_messages": [
+        "Your favorite routine is having the black cube picked up and placed on top of the yellow cube.",
+        "The critical routine is placing the red cube on top of the yellow cube.",
+        "Your favorite routine is having the black cube picked up and placed on top of the yellow cube."
+      ],
+      "tool_calls": [],
+      "final_response": "Your favorite routine is having the black cube picked up and placed on top of the yellow cube.",
+      "outcome": "success",
+      "error": null
+    }
+  ]
+}
