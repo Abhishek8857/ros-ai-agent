@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-15T13:50:48",
+  "generated_at": "2026-04-17T14:58:15",
   "world_state": {
-    "last_updated": "2026-04-15T13:48:35",
+    "last_updated": "2026-04-17T14:44:04",
     "current_pose": {
-      "x": 1.663,
-      "y": -3.1418,
-      "yaw_degrees": -0.77
+      "x": -3.6932,
+      "y": -2.2122,
+      "yaw_degrees": -92.09
     },
-    "last_location": "Table D",
+    "last_location": "table E",
     "known_locations": [
       "Table A",
       "Table B",
@@ -17,6 +17,11 @@
       "Table F",
       "home",
       "kitchen",
+      "table B",
+      "table C",
+      "table D",
+      "table E",
+      "table F",
       "table Z"
     ],
     "notes": []
@@ -24,27 +29,27 @@
   "procedures": {
     "other": {
       "tool_sequence": [],
-      "observed_count": 17,
+      "observed_count": 21,
       "modal_count": 9,
-      "avg_duration_s": 23.8
+      "avg_duration_s": 31.6
     },
     "home": {
       "tool_sequence": [
         "navigate_to_location",
         "get_current_pose"
       ],
-      "observed_count": 4,
-      "modal_count": 4,
-      "avg_duration_s": 44.3
+      "observed_count": 6,
+      "modal_count": 6,
+      "avg_duration_s": 50.0
     },
     "navigate": {
       "tool_sequence": [
         "navigate_to_location",
         "get_current_pose"
       ],
-      "observed_count": 15,
-      "modal_count": 13,
-      "avg_duration_s": 39.7
+      "observed_count": 31,
+      "modal_count": 23,
+      "avg_duration_s": 68.4
     },
     "query_pose": {
       "tool_sequence": [
@@ -55,19 +60,22 @@
       "avg_duration_s": 4.1
     },
     "relative_move": {
-      "tool_sequence": [],
-      "observed_count": 5,
+      "tool_sequence": [
+        "move_backward",
+        "get_current_pose"
+      ],
+      "observed_count": 8,
       "modal_count": 2,
-      "avg_duration_s": 11.1
+      "avg_duration_s": 27.7
     },
     "rotate": {
       "tool_sequence": [
         "turn_left",
         "get_current_pose"
       ],
-      "observed_count": 3,
+      "observed_count": 4,
       "modal_count": 1,
-      "avg_duration_s": 22.4
+      "avg_duration_s": 33.6
     },
     "save_location": {
       "tool_sequence": [
@@ -715,35 +723,427 @@
       "outcome": "success",
       "outcome_fact": "Execute the critical routine. SUCCESS.",
       "tools": []
+    },
+    {
+      "time": "2026-04-15T13:51:29",
+      "duration_s": 115.194,
+      "query": "perform the critical routine ",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Perform the critical routine. SUCCESS  [position error: ≈0.04 m, yaw error: ≈0.1°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table c"
+      }
+    },
+    {
+      "time": "2026-04-15T13:54:18",
+      "duration_s": 56.313,
+      "query": "go home",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS  [position error: ≈0.01 m, yaw error: ≈1.3° (normalized)].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-17T12:55:50",
+      "duration_s": 147.687,
+      "query": "go to Table A",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table A. SUCCESS  [position error ≈ 0.05 m, yaw error ≈ 2.0°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table A"
+      }
+    },
+    {
+      "time": "2026-04-17T13:03:45",
+      "duration_s": 98.555,
+      "query": "navigate to Table B",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table B. SUCCESS  [position error: ≈0.01 m, yaw error: ≈1.0°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table B"
+      }
+    },
+    {
+      "time": "2026-04-17T13:05:56",
+      "duration_s": 95.873,
+      "query": "move to table C",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table C. SUCCESS (within 0.15 m and 10° tolerances).",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table C"
+      }
+    },
+    {
+      "time": "2026-04-17T13:11:12",
+      "duration_s": 64.909,
+      "query": "go to table d",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table D. SUCCESS  [position error: 0.01 m, yaw error: 2.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table D"
+      }
+    },
+    {
+      "time": "2026-04-17T13:12:26",
+      "duration_s": 71.813,
+      "query": "navigate to table E ",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table E. SUCCESS  [position error: 0.01 m, yaw error: 3.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table E"
+      }
+    },
+    {
+      "time": "2026-04-17T13:13:40",
+      "duration_s": 53.952,
+      "query": "Take me to table F",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table F. SUCCESS  [position error: 0.01 m, yaw error: 2.2°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table F"
+      }
+    },
+    {
+      "time": "2026-04-17T13:14:38",
+      "duration_s": 66.469,
+      "query": "go home",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Return to home. SUCCESS  [position error: 0.04 m, yaw error: 0.4°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "home"
+      }
+    },
+    {
+      "time": "2026-04-17T13:15:56",
+      "duration_s": 70.723,
+      "query": "move forward 1 meter",
+      "task_type": "relative_move",
+      "outcome": "error",
+      "outcome_fact": "Relative move. ERROR.",
+      "tools": [],
+      "error": "cannot schedule new futures after shutdown"
+    },
+    {
+      "time": "2026-04-17T13:19:38",
+      "duration_s": 38.021,
+      "query": "move backwards 0.5",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. FAILED  [position error: ~0.21 m — outside 0.15 m tolerance].",
+      "tools": [
+        "move_backward",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T13:35:12",
+      "duration_s": 65.836,
+      "query": "go left 1.5 meter",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS  [position error ≈ 0.08 m, yaw error ≈ 0.2°].",
+      "tools": [
+        "move_left",
+        "get_current_pose",
+        "navigate_to_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T13:36:44",
+      "duration_s": 11.128,
+      "query": "move left 0.5 meter",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Move left 0.5 meter. SUCCESS  [movement completed; yaw change (~2°) is within 10° tolerance].",
+      "tools": [
+        "move_left",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T13:36:56",
+      "duration_s": 11.411,
+      "query": "do it again",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Do it again. SUCCESS  [movement completed; yaw change is within 10° tolerance].",
+      "tools": [
+        "move_left",
+        "get_current_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T13:37:10",
+      "duration_s": 62.206,
+      "query": "move backward 1 meter",
+      "task_type": "relative_move",
+      "outcome": "success",
+      "outcome_fact": "Relative move. SUCCESS  [position error ≈ 0.03 m, yaw error ≈ 1.1°].",
+      "tools": [
+        "move_backward",
+        "get_current_pose",
+        "navigate_to_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T13:38:26",
+      "duration_s": 67.315,
+      "query": "turn left 90 degrees",
+      "task_type": "rotate",
+      "outcome": "success",
+      "outcome_fact": "Rotate. SUCCESS  [position error ≈ 0.00 m, yaw error ≈ 1.4°].",
+      "tools": [
+        "turn_left",
+        "get_current_pose",
+        "navigate_to_pose"
+      ]
+    },
+    {
+      "time": "2026-04-17T14:06:41",
+      "duration_s": 122.07,
+      "query": "navigat to table A then to Table F",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Navigat to table a then to table f. SUCCESS  [position error: 0.02 m, yaw error: 2.3°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table F"
+      }
+    },
+    {
+      "time": "2026-04-17T14:15:45",
+      "duration_s": 96.286,
+      "query": "navigate to table B then tell me your position",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table B. SUCCESS  [position error: 0.05 m, yaw error: 2.8°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table B"
+      }
+    },
+    {
+      "time": "2026-04-17T14:19:56",
+      "duration_s": 105.233,
+      "query": "move to table c and then turn 90 degrees",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table C. SUCCESS  [position error: 0.01 m, yaw error: 1.5°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "turn_left"
+      ],
+      "key_args": {
+        "location_name": "table C"
+      }
+    },
+    {
+      "time": "2026-04-17T14:26:32",
+      "duration_s": 83.202,
+      "query": "go to table D adn then move right 1 meter",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table D. SUCCESS  [position error: ~0.05 m, yaw error: ~3.9°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "move_right"
+      ],
+      "key_args": {
+        "location_name": "table D"
+      }
+    },
+    {
+      "time": "2026-04-17T14:29:09",
+      "duration_s": 113.258,
+      "query": "go to Table E and move right 1 meter",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table E. SUCCESS  [position error: ~0.03 m, yaw error: ~0.7°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "move_right"
+      ],
+      "key_args": {
+        "location_name": "Table E"
+      }
+    },
+    {
+      "time": "2026-04-17T14:31:31",
+      "duration_s": 118.273,
+      "query": "Take me to table  F and then move righ 0.5 meter",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table F. SUCCESS  [position error: ~0.02 m, yaw error: ~1.3°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "move_right"
+      ],
+      "key_args": {
+        "location_name": "table F"
+      }
+    },
+    {
+      "time": "2026-04-17T14:33:40",
+      "duration_s": 119.289,
+      "query": "Go to Table A then Table B",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to Table B. SUCCESS  [position error: ~0.07 m, yaw error: ~3.3°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "Table B"
+      }
+    },
+    {
+      "time": "2026-04-17T14:38:26",
+      "duration_s": 115.538,
+      "query": "Move to table C then back to you starting position",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table C. SUCCESS  [position error: ~0.01 m, yaw error: ~3.2°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "navigate_to_pose"
+      ],
+      "key_args": {
+        "location_name": "table C"
+      }
+    },
+    {
+      "time": "2026-04-17T14:40:28",
+      "duration_s": 108.546,
+      "query": "Navigate to table D then confirm when you arrive",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table D. FAILED — navigate_to_location(\"table D\") returned status=\"timeout\"; position relative to table D could not be verified..",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table D"
+      }
+    },
+    {
+      "time": "2026-04-17T14:43:20",
+      "duration_s": 19.668,
+      "query": "Navigate to table D then confirm when you arrivee",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table D. SUCCESS  [position error: ~0.02 m, yaw error: ~3.4°].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose"
+      ],
+      "key_args": {
+        "location_name": "table D"
+      }
+    },
+    {
+      "time": "2026-04-17T14:44:04",
+      "duration_s": 112.659,
+      "query": "go to table E turn left 90 degrees and then report your pose",
+      "task_type": "navigate",
+      "outcome": "success",
+      "outcome_fact": "Navigate to table E. SUCCESS  [within 0.15 m and 10° tolerances].",
+      "tools": [
+        "navigate_to_location",
+        "get_current_pose",
+        "turn_left"
+      ],
+      "key_args": {
+        "location_name": "table E"
+      }
     }
   ],
   "stats": {
-    "total_episodes": 52,
-    "meaningful_episodes": 50,
+    "total_episodes": 79,
+    "meaningful_episodes": 77,
     "trivial_episodes_pruned": 2,
-    "successful": 50,
-    "errors": 2,
-    "average_duration_s": 25.82,
+    "successful": 76,
+    "errors": 3,
+    "average_duration_s": 44.99,
     "task_frequency": {
-      "other": 17,
-      "home": 4,
-      "navigate": 15,
+      "other": 21,
+      "home": 6,
+      "navigate": 31,
       "query_pose": 1,
-      "relative_move": 7,
-      "rotate": 3,
+      "relative_move": 11,
+      "rotate": 4,
       "save_location": 3,
       "delete_location": 2
     },
     "tool_frequency": {
-      "get_current_pose": 29,
-      "navigate_to_location": 21,
+      "get_current_pose": 55,
+      "navigate_to_location": 41,
+      "move_left": 5,
+      "move_right": 5,
+      "turn_left": 5,
+      "navigate_to_pose": 4,
+      "move_backward": 3,
       "delete_location": 3,
       "move_forward": 2,
-      "move_left": 2,
-      "move_right": 2,
-      "turn_left": 2,
       "save_location": 2,
-      "move_backward": 1,
       "turn_right": 1
     }
   }
