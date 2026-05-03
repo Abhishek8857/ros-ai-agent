@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-16T14:50:56",
+  "generated_at": "2026-04-26T14:40:28",
   "world_state": {
-    "last_updated": "2026-04-16T13:35:54",
+    "last_updated": "2026-04-16T14:35:05",
     "arm_pose": "home",
     "gripper": "open",
     "handled_objects": [
@@ -1705,20 +1705,47 @@
       "key_args": {
         "retries": 1
       }
+    },
+    {
+      "time": "2026-04-16T14:34:49",
+      "duration_s": 1.993,
+      "query": "what is my favorite routine",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "What is my favorite routine. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-16T14:34:58",
+      "duration_s": 1.666,
+      "query": "what is the critical routine",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "What is the critical routine. SUCCESS.",
+      "tools": []
+    },
+    {
+      "time": "2026-04-16T14:35:05",
+      "duration_s": 1.971,
+      "query": "favorite routine",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Favorite routine. SUCCESS.",
+      "tools": []
     }
   ],
   "stats": {
-    "total_episodes": 125,
-    "meaningful_episodes": 76,
+    "total_episodes": 128,
+    "meaningful_episodes": 79,
     "trivial_episodes_pruned": 49,
-    "successful": 120,
+    "successful": 123,
     "errors": 5,
-    "average_duration_s": 69.17,
+    "average_duration_s": 67.59,
     "task_frequency": {
       "home": 50,
       "pick_only": 26,
       "observe": 8,
-      "other": 14,
+      "other": 17,
       "pick_and_place": 26,
       "save_pose": 1
     },
