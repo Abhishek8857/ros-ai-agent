@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-26T14:40:28",
+  "generated_at": "2026-08-03T13:42:09",
   "world_state": {
-    "last_updated": "2026-04-16T14:35:05",
+    "last_updated": "2026-08-03T13:35:25",
     "arm_pose": "home",
     "gripper": "open",
     "handled_objects": [
@@ -10,6 +10,7 @@
       "green cube",
       "nvidia box",
       "red cube",
+      "small black component in front of the green and blue cubes",
       "two-tone cube",
       "yellow cube"
     ],
@@ -19,18 +20,20 @@
       "dark blue cube",
       "flat bl",
       "green",
+      "green cube",
       "nvidia box",
+      "raised middle s",
       "red cube",
       "red rectangular cube",
       "solid green cube",
       "yellow cube"
     ],
     "known_poses": {
-      "home": "Updated home pose as current stable configuration",
+      "home": "Updated home pose from fresh joint readings after previous verification mismatch.",
       "retract": "Retract pose above workspace",
       "pick_pose": "Pose after moving forward 10 cm from home, for picking."
     },
-    "scene": "- A perforated grey rectangular board occupies the lower half of the image, extending left–right and receding slightly away from the camera.\n- On the board, a row of five colored cubes is centered horizontally, about one‑third up from the bottom edge:\n  - Yellow cube: leftmost in the row, slightly l...",
+    "scene": "In front of the robot is a rectangular, light-gray perforated board (pegboard) lying horizontally.\n\nOn the board, along a roughly straight horizontal line:\n\n- Far left: a yellow cube.\n- Left‑center: a green cube.\n- Center: a small black rectangular component with two side wings and a raised middle s...",
     "notes": []
   },
   "procedures": {
@@ -40,8 +43,8 @@
         "get_current_joint_states"
       ],
       "observed_count": 50,
-      "modal_count": 35,
-      "avg_duration_s": 32.2
+      "modal_count": 34,
+      "avg_duration_s": 31.5
     },
     "pick_only": {
       "tool_sequence": [
@@ -56,14 +59,14 @@
       ],
       "observed_count": 18,
       "modal_count": 4,
-      "avg_duration_s": 98.6
+      "avg_duration_s": 95.5
     },
     "observe": {
       "tool_sequence": [
         "capture_only_rgb_image",
         "describe_environment"
       ],
-      "observed_count": 8,
+      "observed_count": 9,
       "modal_count": 5,
       "avg_duration_s": 13.4
     },
@@ -1616,8 +1619,58 @@
       ]
     },
     {
-      "time": "2026-04-16T12:27:21",
-      "duration_s": 11.911,
+      "time": "2026-08-03T13:16:11",
+      "duration_s": 14.336,
+      "query": "what do you see",
+      "task_type": "observe",
+      "outcome": "success",
+      "outcome_fact": "What do you see. SUCCESS.",
+      "tools": [
+        "capture_only_rgb_image",
+        "get_current_pose",
+        "describe_environment"
+      ],
+      "scene_description": "The image shows a perforated gray work surface in the foreground, with a light‑blue tiled floor/grid in the background.\n\nOn the work surface, four colored cubes are arranged in a horizontal row near the top edge of the table:\n\n- Far left: a yellow cube  \n- Left‑center: a green cube  \n- Right‑center:..."
+    },
+    {
+      "time": "2026-08-03T13:23:29",
+      "duration_s": 37.119,
+      "query": " go home and tell me what you see",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Arm returned to home pose. SUCCESS (all joint errors within 0.05 rad tolerance).",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states",
+        "capture_only_rgb_image",
+        "capture_only_depth_image",
+        "describe_environment"
+      ],
+      "scene_description": "In front of the robot on the perforated board there are four separate colored cubes, all resting directly on the board (no stacking):\n\n- A yellow cube is on the left.\n- To its right is a green cube.\n- Near the center, between the green and red cubes, is a blue cube.\n- On the right is a red cube.\n\nTh..."
+    },
+    {
+      "time": "2026-08-03T13:25:54",
+      "duration_s": 54.604,
+      "query": "can you pickup the black component in the middle",
+      "task_type": "other",
+      "outcome": "success",
+      "outcome_fact": "Can you pickup the black component in the middle (succeeded after 1 retry). FAILED (no grasp pose from planner).",
+      "tools": [
+        "capture_rgbd",
+        "segment_objects",
+        "save_segmentation_for_graspnet",
+        "get_latest_grasp_pose"
+      ],
+      "seen_objects": [
+        "small black component in front of the green and blue cubes"
+      ],
+      "key_args": {
+        "retries": 1
+      }
+    },
+    {
+      "time": "2026-08-03T13:31:39",
+      "duration_s": 11.029,
       "query": "what do you see",
       "task_type": "observe",
       "outcome": "success",
@@ -1626,145 +1679,74 @@
         "capture_only_rgb_image",
         "describe_environment"
       ],
-      "scene_description": "- A perforated grey rectangular board occupies the lower half of the image, extending left–right and receding slightly away from the camera.\n- On the board, a row of five colored cubes is centered horizontally, about one‑third up from the bottom edge:\n  - Yellow cube: leftmost in the row, slightly l..."
+      "scene_description": "In front of the robot is a rectangular, light-gray perforated board (pegboard) lying horizontally.\n\nOn the board, along a roughly straight horizontal line:\n\n- Far left: a yellow cube.\n- Left‑center: a green cube.\n- Center: a small black rectangular component with two side wings and a raised middle s..."
     },
     {
-      "time": "2026-04-16T12:27:54",
-      "duration_s": 198.092,
-      "query": "pick up the yellow cube and go to retract pose",
+      "time": "2026-08-03T13:34:33",
+      "duration_s": 31.662,
+      "query": "can you go home ",
+      "task_type": "home",
+      "outcome": "success",
+      "outcome_fact": "Arm returned to home pose. SUCCESS (all joint errors within 0.05 rad tolerance).",
+      "tools": [
+        "move_to_named_pose",
+        "get_current_joint_states"
+      ]
+    },
+    {
+      "time": "2026-08-03T13:35:25",
+      "duration_s": 119.736,
+      "query": "can you pick up the red cube ",
       "task_type": "pick_only",
       "outcome": "success",
-      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS (all joint errors ≤ 0.05 rad). Visual check: The yellow cube appears very large and partly cut off at the bottom of the image, indicating it is extremely close to the camera and no longer lying on the workspace. This suggests it is inside (or ve...",
+      "outcome_fact": "object grasped (succeeded after 1 retry). SUCCESS.",
       "tools": [
         "capture_rgbd",
-        "move_to_named_pose",
+        "open_the_gripper",
         "segment_objects",
         "save_segmentation_for_graspnet",
         "get_latest_grasp_pose",
-        "pick_up_object",
-        "capture_only_rgb_image",
-        "describe_environment",
-        "get_current_joint_states"
+        "pick_up_object"
       ],
       "seen_objects": [
-        "yellow cube"
-      ],
-      "key_args": {
-        "retries": 1
-      },
-      "grasp_assessment": "The yellow cube appears very large and partly cut off at the bottom of the image, indicating it is extremely close to the camera and no longer lying on the workspace. This suggests it is inside (or ve..."
-    },
-    {
-      "time": "2026-04-16T13:02:01",
-      "duration_s": 3.498,
-      "query": "my favorite cube is the yellow cube ",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "My favorite cube is the yellow cube. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T13:02:21",
-      "duration_s": 3.351,
-      "query": "i like red cube better than the black cube ",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "I like red cube better than the black cube. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T13:02:51",
-      "duration_s": 2.838,
-      "query": "placing the red cube on the yellow cube is a critical routine",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "Placing the red cube on the yellow cube is a critical routine. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T13:03:25",
-      "duration_s": 2.241,
-      "query": "picking up the black cube and placing on the yellow cube is my favorite routine",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "Picking up the black cube and placing on the yellow cube is my favorite routine. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T13:35:54",
-      "duration_s": 59.012,
-      "query": "go home and open gripper",
-      "task_type": "home",
-      "outcome": "success",
-      "outcome_fact": "Arm returned to home pose (succeeded after 1 retry). SUCCESS.",
-      "tools": [
-        "move_to_named_pose",
-        "get_current_joint_states",
-        "open_the_gripper"
+        "red cube"
       ],
       "key_args": {
         "retries": 1
       }
-    },
-    {
-      "time": "2026-04-16T14:34:49",
-      "duration_s": 1.993,
-      "query": "what is my favorite routine",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "What is my favorite routine. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T14:34:58",
-      "duration_s": 1.666,
-      "query": "what is the critical routine",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "What is the critical routine. SUCCESS.",
-      "tools": []
-    },
-    {
-      "time": "2026-04-16T14:35:05",
-      "duration_s": 1.971,
-      "query": "favorite routine",
-      "task_type": "other",
-      "outcome": "success",
-      "outcome_fact": "Favorite routine. SUCCESS.",
-      "tools": []
     }
   ],
   "stats": {
-    "total_episodes": 128,
-    "meaningful_episodes": 79,
-    "trivial_episodes_pruned": 49,
-    "successful": 123,
+    "total_episodes": 123,
+    "meaningful_episodes": 75,
+    "trivial_episodes_pruned": 48,
+    "successful": 118,
     "errors": 5,
-    "average_duration_s": 67.59,
+    "average_duration_s": 69.82,
     "task_frequency": {
       "home": 50,
       "pick_only": 26,
-      "observe": 8,
-      "other": 17,
+      "observe": 9,
+      "other": 11,
       "pick_and_place": 26,
       "save_pose": 1
     },
     "tool_frequency": {
-      "move_to_named_pose": 91,
-      "get_current_joint_states": 80,
-      "capture_only_rgb_image": 43,
-      "describe_environment": 43,
-      "capture_rgbd": 40,
-      "segment_objects": 40,
-      "save_segmentation_for_graspnet": 40,
-      "get_latest_grasp_pose": 40,
+      "move_to_named_pose": 90,
+      "get_current_joint_states": 79,
+      "capture_only_rgb_image": 44,
+      "describe_environment": 44,
+      "capture_rgbd": 41,
+      "segment_objects": 41,
+      "save_segmentation_for_graspnet": 41,
+      "get_latest_grasp_pose": 41,
       "pick_up_object": 40,
       "get_place_pose": 19,
       "place_object": 19,
-      "list_saved_poses": 15,
+      "list_saved_poses": 16,
       "open_the_gripper": 6,
-      "get_current_pose": 3,
-      "capture_only_depth_image": 3,
+      "get_current_pose": 4,
+      "capture_only_depth_image": 4,
       "save_current_pose": 2
     }
   }

@@ -44,7 +44,7 @@ RUN pip install --no-cache-dir -U \
     langgraph-sdk==0.3.13 \
     langmem==0.0.30 \
     agentevals==0.0.9 \
-    google-genai==1.71.0 \
+    google-genai \
     Pillow==12.2.0 \
     numpy==1.24.0 \
     dotenv==0.9.9 \
