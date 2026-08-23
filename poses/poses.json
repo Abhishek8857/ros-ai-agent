@@ -37,5 +37,18 @@
     ],
     "description": "Pose after moving forward 10 cm from home, for picking.",
     "saved_at": "2026-04-09T18:48:54"
+  },
+  "drop_pose": {
+    "joints": [
+      0.59503187999014,
+      -0.13490402291461745,
+      -1.6232217181175423,
+      -0.023835291756209465,
+      3.141581468313215,
+      -1.619653614889054,
+      2.16235431288011
+    ],
+    "description": "Retract, then right 15 cm, backward 10 cm (updated)",
+    "saved_at": "2026-08-23T14:04:54"
   }
 }

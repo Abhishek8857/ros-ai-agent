@@ -1,0 +1,23 @@
+{
+  "session_id": "session_20260823_154554_3aaf71",
+  "created_at": 1787499954.5279245,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260823_154554_3aaf71",
+      "timestamp_start": "2026-08-23T15:45:55.326806",
+      "timestamp_end": "2026-08-23T15:46:00.251782",
+      "duration_s": 4.925,
+      "query": "pick up the grey cube and place it on the blue cube ",
+      "retries": {
+        "count": 0,
+        "attempts": []
+      },
+      "ai_messages": [],
+      "tool_calls": [],
+      "final_response": "",
+      "outcome": "error",
+      "error": "cannot schedule new futures after shutdown"
+    }
+  ]
+}
