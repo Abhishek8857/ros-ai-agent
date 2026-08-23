@@ -38,18 +38,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install --no-cache-dir -U \
     python-dotenv \
-    langchain==1.2.10 \
-    langchain-core==1.2.16 \
-    langchain-anthropic==1.3.4 \
-    langchain-aws==1.3.0 \
-    langchain-openai==1.1.10 \
-    langchain_ollama==1.0.1 \
-    langgraph==1.0.9 \
-    langgraph-sdk==0.3.9 \
+    langchain==1.2.15 \
+    langchain-core==1.2.28 \
+    langchain-anthropic==1.4.0  \
+    langchain-aws==1.4.3 \
+    langchain-openai==1.1.12 \
+    langchain_ollama==1.1.0 \
+    langgraph==1.1.6 \
+    langgraph-sdk==0.3.13 \
     langmem==0.0.30 \
     agentevals==0.0.9 \
-    google-genai==1.65.0 \
-    Pillow==12.1.1 \
+    google-genai \
+    Pillow==12.2.0 \
     numpy==1.24.0 \
     dotenv==0.9.9 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
