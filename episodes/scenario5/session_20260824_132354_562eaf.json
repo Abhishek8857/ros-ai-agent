@@ -1,0 +1,29 @@
+{
+  "session_id": "session_20260824_132354_562eaf",
+  "created_at": 1787577834.0373163,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260824_132354_562eaf",
+      "timestamp_start": "2026-08-24T13:23:57.363923",
+      "timestamp_end": "2026-08-24T13:24:36.571825",
+      "duration_s": 39.208,
+      "query": "pick up the red cube and place it on the gray cube\").",
+      "retries": {
+        "count": 1,
+        "attempts": [
+          {
+            "attempt": 1,
+            "failure_reason": "get_latest_grasp_pose failed: NO_GRASP_POSE (no grasp pose available to pick the red cube, so pick-and-place pipeline cannot proceed)",
+            "hint_used": null
+          }
+        ]
+      },
+      "ai_messages": [],
+      "tool_calls": [],
+      "final_response": "",
+      "outcome": "error",
+      "error": "cannot schedule new futures after shutdown"
+    }
+  ]
+}

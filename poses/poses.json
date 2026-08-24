@@ -25,30 +25,30 @@
     "description": "Retract pose above workspace",
     "saved_at": "2026-03-27T12:00:00"
   },
-  "pick_pose": {
+  "inspect_pose": {
     "joints": [
-      0.0569,
-      -0.225,
-      3.1,
-      -1.9355,
-      0.0261,
-      -0.8666,
-      1.527
+      -1.6905139399094464,
+      0.3995070202618346,
+      3.1415676198755467,
+      2.0391559482208264,
+      2.580648103709204,
+      -1.4115595336324427,
+      3.0398788083925057
     ],
-    "description": "Pose after moving forward 10 cm from home, for picking.",
-    "saved_at": "2026-04-09T18:48:54"
+    "description": "User-named inspect pose from current arm configuration after relative moves.",
+    "saved_at": "2026-08-24T08:49:26"
   },
   "drop_pose": {
     "joints": [
-      0.59503187999014,
-      -0.13490402291461745,
-      -1.6232217181175423,
-      -0.023835291756209465,
-      3.141581468313215,
-      -1.619653614889054,
-      2.16235431288011
+      0.5948849400769949,
+      -0.13476234274462584,
+      3.1415873272676134,
+      -1.623165259102433,
+      -0.02381931278966931,
+      -1.6195119347190623,
+      2.162113563117567
     ],
-    "description": "Retract, then right 15 cm, backward 10 cm (updated)",
-    "saved_at": "2026-08-23T14:04:54"
+    "description": "User-specified drop pose after moving right 15 cm and backwards 10 cm from retract.",
+    "saved_at": "2026-08-24T12:22:51"
   }
 }
