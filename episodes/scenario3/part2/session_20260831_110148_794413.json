@@ -1,0 +1,44 @@
+{
+  "session_id": "session_20260831_110148_794413",
+  "created_at": 1788174108.4713056,
+  "episodes": [
+    {
+      "episode_id": "ep_0001",
+      "session_id": "session_20260831_110148_794413",
+      "timestamp_start": "2026-08-31T11:01:54.577709",
+      "timestamp_end": "2026-08-31T11:02:06.493528",
+      "duration_s": 11.916,
+      "query": "go home ",
+      "retries": {
+        "count": 0,
+        "attempts": []
+      },
+      "ai_messages": [
+        "The robot was commanded to go to the home pose.\n\nVerification:\n- Target joints: [0.0492, -0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482]\n- Final joints:  [0.0492, -0.4878, 3.1218, -2.0751, 0.0143, -0.9889, 1.5483]\n- Result: SUCCESS\n\ntask_type: action\noutcome: success\nfailure_reason: null"
+      ],
+      "tool_calls": [
+        {
+          "step": 1,
+          "tool": "move_to_named_pose",
+          "args": {
+            "name": "home"
+          },
+          "output": "{\"success\": true, \"goal_accepted\": true, \"final_status\": \"SUCCEEDED\", \"error_code\": \"SUCCESS\", \"error_description\": \"Joint motion completed.\", \"feedback\": [{\"t\": 1788174116.0762503, \"state\": \"RECEIVED\", \"progress\": 0.25}, {\"t\": 1788174116.0769215, \"state\": \"PLANNING\", \"progress\": 0.5}, {\"t\": 1788174116.0936067, \"state\": \"EXECUTING\", \"progress\": 0.75}, {\"t\": 1788174118.7480373, \"state\": \"DONE\", \"progress\": 1.0}], \"sent_data\": [0.0, 0.0492, -0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482], \"elapsed_s\": 2.674900924999747}",
+          "tool_call_id": "call_TVITeSObAMYRfejbAIjETWK0"
+        },
+        {
+          "step": 2,
+          "tool": "get_current_joint_states",
+          "args": {
+            "max_age_s": 1.0
+          },
+          "output": "{\"success\": true, \"age_s\": 0.0004286766052246094, \"name\": [\"joint_1\", \"joint_2\", \"joint_3\", \"joint_4\", \"joint_5\", \"joint_6\", \"joint_7\"], \"position\": [0.04916227413443139, -0.48781760845642985, 3.1217600929519733, -2.075136186654179, 0.014264475445547455, -0.9889100096824697, 1.5482766366171865], \"normalized_position\": [0.0492, -0.4878, 3.1218, -2.0751, 0.0143, -0.9889, 1.5483], \"velocity\": [0.0, 0.0, 5.302989144751832e-06, 1.8518425715968636e-05, 0.0, -1.0597958653866346e-05, 0.0]}",
+          "tool_call_id": "call_3xJetEO8GKxbnnkk7qVwfBKN"
+        }
+      ],
+      "final_response": "The robot was commanded to go to the home pose.\n\nVerification:\n- Target joints: [0.0492, -0.4878, 3.1217, -2.0751, 0.0143, -0.9889, 1.5482]\n- Final joints:  [0.0492, -0.4878, 3.1218, -2.0751, 0.0143, -0.9889, 1.5483]\n- Result: SUCCESS\n\ntask_type: action\noutcome: success\nfailure_reason: null",
+      "outcome": "success",
+      "error": null
+    }
+  ]
+}
